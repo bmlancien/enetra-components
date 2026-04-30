@@ -10,20 +10,20 @@
     <link rel="stylesheet" href="/src/style.css" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   </head>
-  <body class="bg-[#f8fafc] font-[Inter,sans-serif] text-[#1e293b]">
+  <body class="bg-slate-50 font-[Inter,sans-serif] text-slate-800">
 
     <!-- Header -->
-    <header class="bg-white border-b border-[#e2e8f0] flex h-[54px] items-center justify-between px-6 shrink-0">
+    <header class="bg-white border-b border-slate-200 flex h-14 items-center justify-between px-6 shrink-0">
       <img
         src="/images/enetra-logo.png"
         alt="Enetra"
-        class="h-[19px] w-[136px] object-contain"
+        class="h-5 w-32 object-contain"
       />
       <nav class="flex gap-6 items-center">
-        <span class="text-sm text-[#1e293b]">Projekte</span>
+        <span class="text-sm text-slate-800">Projekte</span>
         <div class="flex gap-2 items-center">
-          <i data-lucide="user-circle" class="w-4 h-4 text-[#1e293b]"></i>
-          <span class="text-sm text-[#1e293b]">Mein Konto</span>
+          <i data-lucide="user-circle" class="w-4 h-4 text-slate-800"></i>
+          <span class="text-sm text-slate-800">Mein Konto</span>
         </div>
       </nav>
     </header>
@@ -32,199 +32,159 @@
     <main class="px-6 lg:px-12 py-12">
       <div class="max-w-[1344px] mx-auto w-full flex flex-col gap-8">
 
-      <!-- Breadcrumb -->
-      <div class="flex items-center gap-2">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M16 8C16 8.19891 15.921 8.38967 15.7803 8.53033C15.6397 8.67098 15.4489 8.75 15.25 8.75H2.70348L7.14441 12.7495C7.21859 12.8151 7.27903 12.8948 7.32225 12.9839C7.36547 13.073 7.39061 13.1698 7.39622 13.2687C7.40182 13.3676 7.38779 13.4666 7.35492 13.5601C7.32205 13.6535 7.271 13.7395 7.20472 13.8131C7.13844 13.8867 7.05823 13.9464 6.96874 13.9889C6.87924 14.0313 6.78223 14.0556 6.6833 14.0603C6.58436 14.0651 6.48547 14.0502 6.39233 14.0165C6.29919 13.9828 6.21365 13.931 6.14063 13.8641L0.248101 8.55731C0.170008 8.48698 0.107568 8.40103 0.0648269 8.30502C0.0220863 8.20901 0 8.10509 0 8C0 7.8949 0.0220863 7.79098 0.0648269 7.69498C0.107568 7.59897 0.170008 7.51301 0.248101 7.44268L6.14063 2.13593C6.21369 2.06924 6.29921 2.01765 6.39229 1.98415C6.48536 1.95064 6.58414 1.93588 6.68294 1.94071C6.78175 1.94555 6.87862 1.96988 6.96798 2.0123C7.05734 2.05473 7.13742 2.11441 7.20362 2.18792C7.26982 2.26142 7.32082 2.3473 7.35369 2.4406C7.38656 2.5339 7.40065 2.63278 7.39515 2.73154C7.38965 2.83031 7.36466 2.92701 7.32163 3.01608C7.27859 3.10515 7.21837 3.18483 7.14441 3.25053L2.70357 7.25H15.25C15.4489 7.25 15.6397 7.32901 15.7803 7.46967C15.921 7.61032 16 7.80108 16 8Z" fill="#64748B"/>
-        </svg>
-        <span class="text-sm font-semibold text-[#64748b]">Zurück zu Projekte</span>
-      </div>
-
-      <!-- Project Info -->
-      <div class="flex flex-col gap-2">
-        <h1 class="text-[32px] font-bold leading-normal text-[#1e293b]">Westhafen</h1>
-        <div class="flex gap-6 items-center">
-          <div class="flex gap-2 items-center">
-            <i data-lucide="map-pin" class="w-[19px] h-[19px] text-[#64748b]"></i>
-            <span class="text-sm text-[#64748b]">Berlin</span>
-            <span class="text-sm text-[#64748b]">(52.5385, 13.3367)</span>
-          </div>
-          <div class="flex gap-2 items-center">
-            <i data-lucide="calendar" class="w-4 h-4 text-[#64748b]"></i>
-            <span class="text-sm text-[#64748b]">Geändert: 27.06.2026</span>
-          </div>
-          <div class="flex gap-2 items-center">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M5.99996 8.00004C6.65923 8.00004 7.3037 7.80455 7.85186 7.43827C8.40002 7.072 8.82727 6.55141 9.07956 5.94232C9.33185 5.33323 9.39786 4.66301 9.26924 4.01641C9.14063 3.3698 8.82316 2.77586 8.35698 2.30969C7.89081 1.84351 7.29686 1.52604 6.65026 1.39742C6.00366 1.26881 5.33344 1.33482 4.72435 1.58711C4.11526 1.8394 3.59467 2.26664 3.22839 2.81481C2.86212 3.36297 2.66663 4.00744 2.66663 4.66671C2.66663 5.55076 3.01782 6.39861 3.64294 7.02373C4.26806 7.64885 5.1159 8.00004 5.99996 8.00004ZM5.99996 2.66671C6.39552 2.66671 6.7822 2.78401 7.1111 3.00377C7.44 3.22353 7.69634 3.53589 7.84772 3.90134C7.99909 4.26679 8.0387 4.66893 7.96153 5.05689C7.88436 5.44485 7.69388 5.80122 7.41417 6.08092C7.13447 6.36063 6.7781 6.55111 6.39014 6.62828C6.00218 6.70545 5.60004 6.66584 5.23459 6.51447C4.86914 6.36309 4.55678 6.10675 4.33702 5.77785C4.11726 5.44895 3.99996 5.06227 3.99996 4.66671C3.99996 4.13628 4.21067 3.62757 4.58575 3.2525C4.96082 2.87742 5.46953 2.66671 5.99996 2.66671ZM7.99996 9.33338H3.99996C3.56222 9.33338 3.12877 9.41959 2.72435 9.58711C2.31993 9.75463 1.95247 10.0002 1.64294 10.3097C1.01782 10.9348 0.666626 11.7827 0.666626 12.6667V14C0.666626 14.1769 0.736864 14.3464 0.861888 14.4714C0.986912 14.5965 1.15648 14.6667 1.33329 14.6667H10.6666C10.8434 14.6667 11.013 14.5965 11.138 14.4714C11.2631 14.3464 11.3333 14.1769 11.3333 14V12.6667C11.3333 11.7827 10.9821 10.9348 10.357 10.3097C9.73186 9.68456 8.88401 9.33338 7.99996 9.33338ZM9.99996 13.3334H1.99996V12.6667C1.99996 12.1363 2.21067 11.6276 2.58575 11.2525C2.96082 10.8774 3.46953 10.6667 3.99996 10.6667H7.99996C8.53039 10.6667 9.0391 10.8774 9.41417 11.2525C9.78925 11.6276 9.99996 12.1363 9.99996 12.6667V13.3334ZM9.99996 8.00004V6.66671C10.5304 6.66671 11.0391 6.456 11.4142 6.08092C11.7892 5.70585 12 5.19714 12 4.66671C12 4.13628 11.7892 3.62757 11.4142 3.2525C11.0391 2.87742 10.5304 2.66671 9.99996 2.66671V1.33338C10.884 1.33338 11.7319 1.68457 12.357 2.30969C12.9821 2.93481 13.3333 3.78265 13.3333 4.66671C13.3333 5.55076 12.9821 6.39861 12.357 7.02373C11.7319 7.64885 10.884 8.00004 9.99996 8.00004ZM15.3333 12.6667V14C15.3333 14.1769 15.2631 14.3464 15.138 14.4714C15.013 14.5965 14.8434 14.6667 14.6666 14.6667H12.6666V13.3334H14V12.6667C14 12.1363 13.7892 11.6276 13.4142 11.2525C13.0391 10.8774 12.5304 10.6667 12 10.6667H11.4533V9.33338H12C12.4377 9.33338 12.8712 9.41959 13.2756 9.58711C13.68 9.75463 14.0475 10.0002 14.357 10.3097C14.6665 10.6192 14.912 10.9867 15.0796 11.3911C15.2471 11.7955 15.3333 12.229 15.3333 12.6667Z" fill="#0E7490"/>
-            </svg>
-            <span class="text-sm font-bold text-[#0e7490]">5 Nutzer</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Search, Sort + Grundszenario -->
-      <div class="border-b-2 border-[#e2e8f0] flex flex-col gap-6 pb-8">
-
-        <!-- Search row -->
-        <div class="flex gap-4 items-center">
-          <div class="bg-white border border-[#94a3b8] flex gap-4 h-[41px] items-center px-4 rounded-[3px] w-[352px]">
-            <i data-lucide="search" class="w-4 h-4 text-[#64748b] shrink-0"></i>
-            <span class="text-sm text-[#64748b]">Szenarien durchsuchen...</span>
-          </div>
-          <div class="bg-white border border-[#94a3b8] flex gap-4 h-[41px] items-center px-4 rounded-[3px] cursor-pointer">
-            <span class="text-sm font-semibold text-[#1e293b]">Sortieren</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-[#1e293b]"></i>
-          </div>
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M16 8C16 8.19891 15.921 8.38967 15.7803 8.53033C15.6397 8.67098 15.4489 8.75 15.25 8.75H2.70348L7.14441 12.7495C7.21859 12.8151 7.27903 12.8948 7.32225 12.9839C7.36547 13.073 7.39061 13.1698 7.39622 13.2687C7.40182 13.3676 7.38779 13.4666 7.35492 13.5601C7.32205 13.6535 7.271 13.7395 7.20472 13.8131C7.13844 13.8867 7.05823 13.9464 6.96874 13.9889C6.87924 14.0313 6.78223 14.0556 6.6833 14.0603C6.58436 14.0651 6.48547 14.0502 6.39233 14.0165C6.29919 13.9828 6.21365 13.931 6.14063 13.8641L0.248101 8.55731C0.170008 8.48698 0.107568 8.40103 0.0648269 8.30502C0.0220863 8.20901 0 8.10509 0 8C0 7.8949 0.0220863 7.79098 0.0648269 7.69498C0.107568 7.59897 0.170008 7.51301 0.248101 7.44268L6.14063 2.13593C6.21369 2.06924 6.29921 2.01765 6.39229 1.98415C6.48536 1.95064 6.58414 1.93588 6.68294 1.94071C6.78175 1.94555 6.87862 1.96988 6.96798 2.0123C7.05734 2.05473 7.13742 2.11441 7.20362 2.18792C7.26982 2.26142 7.32082 2.3473 7.35369 2.4406C7.38656 2.5339 7.40065 2.63278 7.39515 2.73154C7.38965 2.83031 7.36466 2.92701 7.32163 3.01608C7.27859 3.10515 7.21837 3.18483 7.14441 3.25053L2.70357 7.25H15.25C15.4489 7.25 15.6397 7.32901 15.7803 7.46967C15.921 7.61032 16 7.80108 16 8Z" fill="#64748B"/>
+          </svg>
+          <span class="text-sm font-semibold text-slate-500">Zurück zu Projekte</span>
         </div>
 
-        <!-- Grundszenario card -->
-        <div class="bg-[#ecfeff] border border-[#a5f3fc] [box-shadow:0px_1px_2px_rgba(21,94,117,0.1)] flex flex-col gap-6 p-6 rounded-[8px] w-[437px]">
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Grundszenario</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6.66671 3.33333C6.66671 4.06971 7.26366 4.66667 8.00004 4.66667C8.73642 4.66667 9.33337 4.06971 9.33337 3.33333C9.33337 2.59695 8.73642 2 8.00004 2C7.26366 2 6.66671 2.59695 6.66671 3.33333Z" fill="#155E75"/>
-                <path d="M6.66671 8.00008C6.66671 8.73646 7.26366 9.33342 8.00004 9.33342C8.73642 9.33342 9.33337 8.73646 9.33337 8.00008C9.33337 7.2637 8.73642 6.66675 8.00004 6.66675C7.26366 6.66675 6.66671 7.2637 6.66671 8.00008Z" fill="#155E75"/>
-                <path d="M6.66671 12.6666C6.66671 13.403 7.26366 13.9999 8.00004 13.9999C8.73642 13.9999 9.33337 13.403 9.33337 12.6666C9.33337 11.9302 8.73642 11.3333 8.00004 11.3333C7.26366 11.3333 6.66671 11.9302 6.66671 12.6666Z" fill="#155E75"/>
-              </svg>
+        <!-- Project Info -->
+        <div class="flex flex-col gap-2">
+          <h1 class="text-3xl font-bold leading-normal text-slate-800">Westhafen</h1>
+          <div class="flex gap-6 items-center">
+            <div class="flex gap-2 items-center">
+              <i data-lucide="map-pin" class="w-5 h-5 text-slate-500"></i>
+              <span class="text-sm text-slate-500">Berlin</span>
+              <span class="text-sm text-slate-500">(52.5385, 13.3367)</span>
             </div>
-            <p class="text-sm text-[#155e75] leading-normal">
-              Basis-Szenario aus dem künftige Szenarien entwickelt werden können.
-            </p>
-          </div>
-          <button class="bg-[#cffafe] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M15.1438 14.35H1.65V0.85625C1.65 0.41875 1.29375 0.0625 0.85625 0.0625C0.41875 0.0625 0.0625 0.41875 0.0625 0.85625V15.1438C0.0625 15.5813 0.41875 15.9375 0.85625 15.9375H15.1438C15.5813 15.9375 15.9375 15.5813 15.9375 15.1438C15.9375 14.7063 15.5813 14.35 15.1438 14.35Z" fill="#0E7490"/>
-              <path d="M4.64998 10.0845L7.34373 6.71572L9.9031 8.63447C10.2187 8.87197 10.6625 8.84072 10.9406 8.55947L14.9094 4.59072C15.2187 4.28135 15.2187 3.77822 14.9094 3.46885C14.6 3.15947 14.0969 3.15947 13.7875 3.46885L10.3062 6.95322L7.68123 4.98447C7.33748 4.72822 6.8531 4.7876 6.58435 5.12197L3.40935 9.09072C3.13435 9.43447 3.1906 9.93135 3.53435 10.2063C3.8156 10.4313 4.38436 10.4188 4.64998 10.0845Z" fill="#0E7490"/>
-            </svg>
-            <span class="text-sm font-semibold text-[#155e75] tracking-[0.28px]">Ergebnisse</span>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- Technologie-Szenarien -->
-      <div class="flex flex-col gap-4">
-
-        <!-- Section header -->
-        <div class="flex items-center justify-between">
-          <span class="text-base font-bold text-[#1e293b]">Technologie-Szenarien</span>
-          <button class="bg-[#0e7490] flex gap-2 items-center justify-center px-6 py-2 rounded-full cursor-pointer">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.99991 15.8399C3.67687 15.8399 0.159912 12.323 0.159912 7.99991C0.159912 3.67687 3.67687 0.159912 7.99991 0.159912C12.323 0.159912 15.8399 3.67687 15.8399 7.99991C15.8399 12.323 12.323 15.8399 7.99991 15.8399ZM7.99991 1.43991C4.38279 1.43991 1.43991 4.38279 1.43991 7.99991C1.43991 11.617 4.38279 14.5599 7.99991 14.5599C11.617 14.5599 14.5599 11.617 14.5599 7.99991C14.5599 4.38279 11.617 1.43991 7.99991 1.43991Z" fill="white"/>
-              <path d="M7.99991 15.8399C3.67687 15.8399 0.159912 12.323 0.159912 7.99991C0.159912 3.67687 3.67687 0.159912 7.99991 0.159912C12.323 0.159912 15.8399 3.67687 15.8399 7.99991C15.8399 12.323 12.323 15.8399 7.99991 15.8399ZM7.99991 1.43991C4.38279 1.43991 1.43991 4.38279 1.43991 7.99991C1.43991 11.617 4.38279 14.5599 7.99991 14.5599C11.617 14.5599 14.5599 11.617 14.5599 7.99991C14.5599 4.38279 11.617 1.43991 7.99991 1.43991Z" fill="white"/>
-              <path d="M7.99986 11.8199C7.64642 11.8199 7.35986 11.5334 7.35986 11.1799V4.81993C7.35986 4.46649 7.64642 4.17993 7.99986 4.17993C8.3533 4.17993 8.63986 4.46649 8.63986 4.81993V11.1799C8.63986 11.5334 8.3533 11.8199 7.99986 11.8199Z" fill="white"/>
-              <path d="M11.1799 8.63986H4.81993C4.46649 8.63986 4.17993 8.3533 4.17993 7.99986C4.17993 7.64642 4.46649 7.35986 4.81993 7.35986H11.1799C11.5334 7.35986 11.8199 7.64642 11.8199 7.99986C11.8199 8.3533 11.5334 8.63986 11.1799 8.63986Z" fill="white"/>
-            </svg>
-            <span class="text-sm font-semibold text-white tracking-[0.28px]">Szenario erstellen</span>
-          </button>
-        </div>
-
-        <!-- Scenario cards -->
-        <div class="flex flex-wrap gap-4">
-
-          <!-- Wasserstoff-Integration -->
-          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
-            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
-              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Wasserstoff-Integration</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6.66671 3.33333C6.66671 4.06971 7.26366 4.66667 8.00004 4.66667C8.73642 4.66667 9.33337 4.06971 9.33337 3.33333C9.33337 2.59695 8.73642 2 8.00004 2C7.26366 2 6.66671 2.59695 6.66671 3.33333Z" fill="#1E293B"/>
-                <path d="M6.66671 8.00008C6.66671 8.73646 7.26366 9.33342 8.00004 9.33342C8.73642 9.33342 9.33337 8.73646 9.33337 8.00008C9.33337 7.2637 8.73642 6.66675 8.00004 6.66675C7.26366 6.66675 6.66671 7.2637 6.66671 8.00008Z" fill="#1E293B"/>
-                <path d="M6.66671 12.6666C6.66671 13.403 7.26366 13.9999 8.00004 13.9999C8.73642 13.9999 9.33337 13.403 9.33337 12.6666C9.33337 11.9302 8.73642 11.3333 8.00004 11.3333C7.26366 11.3333 6.66671 11.9302 6.66671 12.6666Z" fill="#1E293B"/>
-              </svg>
+            <div class="flex gap-2 items-center">
+              <i data-lucide="calendar" class="w-4 h-4 text-slate-500"></i>
+              <span class="text-sm text-slate-500">Geändert: 27.06.2026</span>
             </div>
-            <div class="flex flex-col gap-6">
+            <div class="flex gap-2 items-center">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M5.99996 8.00004C6.65923 8.00004 7.3037 7.80455 7.85186 7.43827C8.40002 7.072 8.82727 6.55141 9.07956 5.94232C9.33185 5.33323 9.39786 4.66301 9.26924 4.01641C9.14063 3.3698 8.82316 2.77586 8.35698 2.30969C7.89081 1.84351 7.29686 1.52604 6.65026 1.39742C6.00366 1.26881 5.33344 1.33482 4.72435 1.58711C4.11526 1.8394 3.59467 2.26664 3.22839 2.81481C2.86212 3.36297 2.66663 4.00744 2.66663 4.66671C2.66663 5.55076 3.01782 6.39861 3.64294 7.02373C4.26806 7.64885 5.1159 8.00004 5.99996 8.00004ZM5.99996 2.66671C6.39552 2.66671 6.7822 2.78401 7.1111 3.00377C7.44 3.22353 7.69634 3.53589 7.84772 3.90134C7.99909 4.26679 8.0387 4.66893 7.96153 5.05689C7.88436 5.44485 7.69388 5.80122 7.41417 6.08092C7.13447 6.36063 6.7781 6.55111 6.39014 6.62828C6.00218 6.70545 5.60004 6.66584 5.23459 6.51447C4.86914 6.36309 4.55678 6.10675 4.33702 5.77785C4.11726 5.44895 3.99996 5.06227 3.99996 4.66671C3.99996 4.13628 4.21067 3.62757 4.58575 3.2525C4.96082 2.87742 5.46953 2.66671 5.99996 2.66671ZM7.99996 9.33338H3.99996C3.56222 9.33338 3.12877 9.41959 2.72435 9.58711C2.31993 9.75463 1.95247 10.0002 1.64294 10.3097C1.01782 10.9348 0.666626 11.7827 0.666626 12.6667V14C0.666626 14.1769 0.736864 14.3464 0.861888 14.4714C0.986912 14.5965 1.15648 14.6667 1.33329 14.6667H10.6666C10.8434 14.6667 11.013 14.5965 11.138 14.4714C11.2631 14.3464 11.3333 14.1769 11.3333 14V12.6667C11.3333 11.7827 10.9821 10.9348 10.357 10.3097C9.73186 9.68456 8.88401 9.33338 7.99996 9.33338ZM9.99996 13.3334H1.99996V12.6667C1.99996 12.1363 2.21067 11.6276 2.58575 11.2525C2.96082 10.8774 3.46953 10.6667 3.99996 10.6667H7.99996C8.53039 10.6667 9.0391 10.8774 9.41417 11.2525C9.78925 11.6276 9.99996 12.1363 9.99996 12.6667V13.3334ZM9.99996 8.00004V6.66671C10.5304 6.66671 11.0391 6.456 11.4142 6.08092C11.7892 5.70585 12 5.19714 12 4.66671C12 4.13628 11.7892 3.62757 11.4142 3.2525C11.0391 2.87742 10.5304 2.66671 9.99996 2.66671V1.33338C10.884 1.33338 11.7319 1.68457 12.357 2.30969C12.9821 2.93481 13.3333 3.78265 13.3333 4.66671C13.3333 5.55076 12.9821 6.39861 12.357 7.02373C11.7319 7.64885 10.884 8.00004 9.99996 8.00004ZM15.3333 12.6667V14C15.3333 14.1769 15.2631 14.3464 15.138 14.4714C15.013 14.5965 14.8434 14.6667 14.6666 14.6667H12.6666V13.3334H14V12.6667C14 12.1363 13.7892 11.6276 13.4142 11.2525C13.0391 10.8774 12.5304 10.6667 12 10.6667H11.4533V9.33338H12C12.4377 9.33338 12.8712 9.41959 13.2756 9.58711C13.68 9.75463 14.0475 10.0002 14.357 10.3097C14.6665 10.6192 14.912 10.9867 15.0796 11.3911C15.2471 11.7955 15.3333 12.229 15.3333 12.6667Z" fill="#0E7490"/>
+              </svg>
+              <span class="text-sm font-bold text-cyan-700">5 Nutzer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search, Sort + Grundszenario -->
+        <div class="border-b-2 border-slate-200 flex flex-col gap-6 pb-8">
+
+          <!-- Search row -->
+          <div class="flex gap-4 items-center">
+            <div class="w-80 h-10 bg-white px-4 py-3 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 flex items-center gap-4">
+              <i data-lucide="search" class="w-4 h-4 text-slate-500 shrink-0"></i>
+              <span class="text-sm text-slate-500">Szenarien durchsuchen...</span>
+            </div>
+            <div class="h-10 bg-white px-4 py-3 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 flex items-center gap-4 cursor-pointer">
+              <span class="text-sm font-semibold text-slate-800">Sortieren</span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-800"></i>
+            </div>
+          </div>
+
+          <!-- Grundszenario card -->
+          <div class="w-96 p-6 bg-cyan-50 rounded-lg shadow-[0px_1px_4px_0px_rgba(21,94,117,0.10)] outline outline-1 outline-offset-[-1px] outline-cyan-200 flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
               <div class="flex items-center justify-between">
-                <span class="bg-[#dcfce7] text-[#166534] text-[13px] font-semibold px-3 py-0.5 rounded-full">Berechnet</span>
-                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Grundszenario</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-cyan-800"></i>
               </div>
-              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M15.1438 14.35H1.65V0.85625C1.65 0.41875 1.29375 0.0625 0.85625 0.0625C0.41875 0.0625 0.0625 0.41875 0.0625 0.85625V15.1438C0.0625 15.5813 0.41875 15.9375 0.85625 15.9375H15.1438C15.5813 15.9375 15.9375 15.5813 15.9375 15.1438C15.9375 14.7063 15.5813 14.35 15.1438 14.35Z" fill="#155E75"/>
-                  <path d="M4.64998 10.0845L7.34373 6.71572L9.9031 8.63447C10.2187 8.87197 10.6625 8.84072 10.9406 8.55947L14.9094 4.59072C15.2187 4.28135 15.2187 3.77822 14.9094 3.46885C14.6 3.15947 14.0969 3.15947 13.7875 3.46885L10.3062 6.95322L7.68123 4.98447C7.33748 4.72822 6.8531 4.7876 6.58435 5.12197L3.40935 9.09072C3.13435 9.43447 3.1906 9.93135 3.53435 10.2063C3.8156 10.4313 4.38436 10.4188 4.64998 10.0845Z" fill="#155E75"/>
-                </svg>
-                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
-              </button>
+              <p class="text-sm text-cyan-800 leading-normal">
+                Basis-Szenario aus dem künftige Szenarien entwickelt werden können.
+              </p>
             </div>
-          </div>
-
-          <!-- PV-Integration -->
-          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
-            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
-              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">PV-Integration</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6.66671 3.33333C6.66671 4.06971 7.26366 4.66667 8.00004 4.66667C8.73642 4.66667 9.33337 4.06971 9.33337 3.33333C9.33337 2.59695 8.73642 2 8.00004 2C7.26366 2 6.66671 2.59695 6.66671 3.33333Z" fill="#1E293B"/>
-                <path d="M6.66671 8.00008C6.66671 8.73646 7.26366 9.33342 8.00004 9.33342C8.73642 9.33342 9.33337 8.73646 9.33337 8.00008C9.33337 7.2637 8.73642 6.66675 8.00004 6.66675C7.26366 6.66675 6.66671 7.2637 6.66671 8.00008Z" fill="#1E293B"/>
-                <path d="M6.66671 12.6666C6.66671 13.403 7.26366 13.9999 8.00004 13.9999C8.73642 13.9999 9.33337 13.403 9.33337 12.6666C9.33337 11.9302 8.73642 11.3333 8.00004 11.3333C7.26366 11.3333 6.66671 11.9302 6.66671 12.6666Z" fill="#1E293B"/>
-              </svg>
-            </div>
-            <div class="flex flex-col gap-6">
-              <div class="flex items-center justify-between">
-                <span class="bg-[#dcfce7] text-[#166534] text-[13px] font-semibold px-3 py-0.5 rounded-full">Berechnet</span>
-                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
-              </div>
-              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M15.1438 14.35H1.65V0.85625C1.65 0.41875 1.29375 0.0625 0.85625 0.0625C0.41875 0.0625 0.0625 0.41875 0.0625 0.85625V15.1438C0.0625 15.5813 0.41875 15.9375 0.85625 15.9375H15.1438C15.5813 15.9375 15.9375 15.5813 15.9375 15.1438C15.9375 14.7063 15.5813 14.35 15.1438 14.35Z" fill="#0E7490"/>
-                  <path d="M4.64998 10.0845L7.34373 6.71572L9.9031 8.63447C10.2187 8.87197 10.6625 8.84072 10.9406 8.55947L14.9094 4.59072C15.2187 4.28135 15.2187 3.77822 14.9094 3.46885C14.6 3.15947 14.0969 3.15947 13.7875 3.46885L10.3062 6.95322L7.68123 4.98447C7.33748 4.72822 6.8531 4.7876 6.58435 5.12197L3.40935 9.09072C3.13435 9.43447 3.1906 9.93135 3.53435 10.2063C3.8156 10.4313 4.38436 10.4188 4.64998 10.0845Z" fill="#0E7490"/>
-                </svg>
-                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Ziel 2035 -->
-          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
-            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
-              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Ziel 2035</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6.66671 3.33333C6.66671 4.06971 7.26366 4.66667 8.00004 4.66667C8.73642 4.66667 9.33337 4.06971 9.33337 3.33333C9.33337 2.59695 8.73642 2 8.00004 2C7.26366 2 6.66671 2.59695 6.66671 3.33333Z" fill="#1E293B"/>
-                <path d="M6.66671 8.00008C6.66671 8.73646 7.26366 9.33342 8.00004 9.33342C8.73642 9.33342 9.33337 8.73646 9.33337 8.00008C9.33337 7.2637 8.73642 6.66675 8.00004 6.66675C7.26366 6.66675 6.66671 7.2637 6.66671 8.00008Z" fill="#1E293B"/>
-                <path d="M6.66671 12.6666C6.66671 13.403 7.26366 13.9999 8.00004 13.9999C8.73642 13.9999 9.33337 13.403 9.33337 12.6666C9.33337 11.9302 8.73642 11.3333 8.00004 11.3333C7.26366 11.3333 6.66671 11.9302 6.66671 12.6666Z" fill="#1E293B"/>
-              </svg>
-            </div>
-            <div class="flex flex-col gap-6">
-              <div class="flex items-center justify-between">
-                <span class="bg-[#fef3c7] text-[#92400e] text-[13px] font-semibold px-3 py-0.5 rounded-full">In Bearbeitung</span>
-                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
-              </div>
-              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M15.1438 14.35H1.65V0.85625C1.65 0.41875 1.29375 0.0625 0.85625 0.0625C0.41875 0.0625 0.0625 0.41875 0.0625 0.85625V15.1438C0.0625 15.5813 0.41875 15.9375 0.85625 15.9375H15.1438C15.5813 15.9375 15.9375 15.5813 15.9375 15.1438C15.9375 14.7063 15.5813 14.35 15.1438 14.35Z" fill="#0E7490"/>
-                  <path d="M4.64998 10.0845L7.34373 6.71572L9.9031 8.63447C10.2187 8.87197 10.6625 8.84072 10.9406 8.55947L14.9094 4.59072C15.2187 4.28135 15.2187 3.77822 14.9094 3.46885C14.6 3.15947 14.0969 3.15947 13.7875 3.46885L10.3062 6.95322L7.68123 4.98447C7.33748 4.72822 6.8531 4.7876 6.58435 5.12197L3.40935 9.09072C3.13435 9.43447 3.1906 9.93135 3.53435 10.2063C3.8156 10.4313 4.38436 10.4188 4.64998 10.0845Z" fill="#0E7490"/>
-                </svg>
-                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Ziel 2030 -->
-          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
-            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
-              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Ziel 2030</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6.66671 3.33333C6.66671 4.06971 7.26366 4.66667 8.00004 4.66667C8.73642 4.66667 9.33337 4.06971 9.33337 3.33333C9.33337 2.59695 8.73642 2 8.00004 2C7.26366 2 6.66671 2.59695 6.66671 3.33333Z" fill="#1E293B"/>
-                <path d="M6.66671 8.00008C6.66671 8.73646 7.26366 9.33342 8.00004 9.33342C8.73642 9.33342 9.33337 8.73646 9.33337 8.00008C9.33337 7.2637 8.73642 6.66675 8.00004 6.66675C7.26366 6.66675 6.66671 7.2637 6.66671 8.00008Z" fill="#1E293B"/>
-                <path d="M6.66671 12.6666C6.66671 13.403 7.26366 13.9999 8.00004 13.9999C8.73642 13.9999 9.33337 13.403 9.33337 12.6666C9.33337 11.9302 8.73642 11.3333 8.00004 11.3333C7.26366 11.3333 6.66671 11.9302 6.66671 12.6666Z" fill="#1E293B"/>
-              </svg>
-            </div>
-            <div class="flex flex-col gap-6">
-              <div class="flex items-center justify-between">
-                <span class="bg-[#fef3c7] text-[#92400e] text-[13px] font-semibold px-3 py-0.5 rounded-full">In Bearbeitung</span>
-                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
-              </div>
-              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M15.1438 14.35H1.65V0.85625C1.65 0.41875 1.29375 0.0625 0.85625 0.0625C0.41875 0.0625 0.0625 0.41875 0.0625 0.85625V15.1438C0.0625 15.5813 0.41875 15.9375 0.85625 15.9375H15.1438C15.5813 15.9375 15.9375 15.5813 15.9375 15.1438C15.9375 14.7063 15.5813 14.35 15.1438 14.35Z" fill="#0E7490"/>
-                  <path d="M4.64998 10.0845L7.34373 6.71572L9.9031 8.63447C10.2187 8.87197 10.6625 8.84072 10.9406 8.55947L14.9094 4.59072C15.2187 4.28135 15.2187 3.77822 14.9094 3.46885C14.6 3.15947 14.0969 3.15947 13.7875 3.46885L10.3062 6.95322L7.68123 4.98447C7.33748 4.72822 6.8531 4.7876 6.58435 5.12197L3.40935 9.09072C3.13435 9.43447 3.1906 9.93135 3.53435 10.2063C3.8156 10.4313 4.38436 10.4188 4.64998 10.0845Z" fill="#0E7490"/>
-                </svg>
-                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
-              </button>
-            </div>
+            <button class="flex-1 px-6 py-2 bg-cyan-100 rounded-full flex justify-center items-center gap-3 cursor-pointer">
+              <i data-lucide="chart-line" class="w-4 h-4 text-cyan-800"></i>
+              <span class="text-sm font-semibold text-cyan-800 tracking-tight">Ergebnisse</span>
+            </button>
           </div>
 
         </div>
-      </div>
+
+        <!-- Technologie-Szenarien -->
+        <div class="flex flex-col gap-4">
+
+          <!-- Section header -->
+          <div class="flex items-center justify-between">
+            <span class="text-base font-bold text-slate-800">Technologie-Szenarien</span>
+            <button class="px-6 py-2 bg-cyan-700 rounded-full flex items-center gap-2 cursor-pointer">
+              <i data-lucide="plus-circle" class="w-4 h-4 text-white"></i>
+              <span class="text-sm font-semibold text-white tracking-tight">Szenario erstellen</span>
+            </button>
+          </div>
+
+          <!-- Row 1: Wasserstoff-Integration, PV-Integration, Ziel 2035 -->
+          <div class="flex flex-wrap gap-4">
+
+            <!-- Wasserstoff-Integration -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Wasserstoff-Integration</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800 shrink-0"></i>
+              </div>
+              <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- PV-Integration -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">PV-Integration</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800"></i>
+              </div>
+              <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ziel 2035 -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Ziel 2035</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800"></i>
+              </div>
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ziel 2030 -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Ziel 2030</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800"></i>
+              </div>
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
       </div>
     </main>
