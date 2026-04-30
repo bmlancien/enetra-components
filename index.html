@@ -1,14 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enetra Prototype</title>
+    <title>Westhafen – Enetra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   </head>
-  <body class="bg-white text-gray-900">
-    <main class="min-h-screen flex items-center justify-center">
-      <h1 class="text-4xl font-bold">Enetra Prototype</h1>
+  <body class="bg-[#f8fafc] font-[Inter,sans-serif] text-[#1e293b]">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-[#e2e8f0] flex h-[54px] items-center justify-between px-6 shrink-0">
+      <img
+        src="/images/enetra-logo.png"
+        alt="Enetra"
+        class="h-[19px] w-[136px] object-contain"
+      />
+      <nav class="flex gap-6 items-center">
+        <span class="text-sm text-[#1e293b]">Projekte</span>
+        <div class="flex gap-2 items-center">
+          <i data-lucide="user-circle" class="w-4 h-4 text-[#1e293b]"></i>
+          <span class="text-sm text-[#1e293b]">Mein Konto</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-6 lg:px-12 py-12">
+      <div class="max-w-[1344px] mx-auto w-full flex flex-col gap-8">
+
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-[#64748b]"></i>
+        <span class="text-sm font-semibold text-[#64748b]">Zurück zu Projekte</span>
+      </div>
+
+      <!-- Project Info -->
+      <div class="flex flex-col gap-2">
+        <h1 class="text-[32px] font-bold leading-normal text-[#1e293b]">Westhafen</h1>
+        <div class="flex gap-6 items-center">
+          <div class="flex gap-2 items-center">
+            <i data-lucide="map-pin" class="w-[19px] h-[19px] text-[#64748b]"></i>
+            <span class="text-sm text-[#64748b]">Berlin</span>
+            <span class="text-sm text-[#64748b]">(52.5385, 13.3367)</span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <i data-lucide="calendar" class="w-4 h-4 text-[#64748b]"></i>
+            <span class="text-sm text-[#64748b]">Geändert: 27.06.2026</span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <i data-lucide="users" class="w-4 h-4 text-[#0e7490]"></i>
+            <span class="text-sm font-bold text-[#0e7490]">5 Nutzer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search, Sort + Grundszenario -->
+      <div class="border-b-2 border-[#e2e8f0] flex flex-col gap-6 pb-8">
+
+        <!-- Search row -->
+        <div class="flex gap-4 items-center">
+          <div class="bg-white border border-[#94a3b8] flex gap-4 h-[41px] items-center px-4 rounded-[3px] w-[352px]">
+            <i data-lucide="search" class="w-4 h-4 text-[#64748b] shrink-0"></i>
+            <span class="text-sm text-[#64748b]">Szenarien durchsuchen...</span>
+          </div>
+          <div class="bg-white border border-[#94a3b8] flex gap-4 h-[41px] items-center px-4 rounded-[3px] cursor-pointer">
+            <span class="text-sm font-semibold text-[#1e293b]">Sortieren</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#1e293b]"></i>
+          </div>
+        </div>
+
+        <!-- Grundszenario card -->
+        <div class="bg-[#ecfeff] border border-[#a5f3fc] [box-shadow:0px_1px_2px_rgba(21,94,117,0.1)] flex flex-col gap-6 p-6 rounded-[8px] w-[437px]">
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Grundszenario</span>
+              <i data-lucide="more-vertical" class="w-4 h-4 text-[#64748b]"></i>
+            </div>
+            <p class="text-sm text-[#155e75] leading-normal">
+              Basis-Szenario aus dem künftige Szenarien entwickelt werden können.
+            </p>
+          </div>
+          <button class="bg-[#cffafe] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
+            <i data-lucide="chart-line" class="w-4 h-4 text-[#155e75]"></i>
+            <span class="text-sm font-semibold text-[#155e75] tracking-[0.28px]">Ergebnisse</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Technologie-Szenarien -->
+      <div class="flex flex-col gap-4">
+
+        <!-- Section header -->
+        <div class="flex items-center justify-between">
+          <span class="text-base font-bold text-[#1e293b]">Technologie-Szenarien</span>
+          <button class="bg-[#0e7490] flex gap-2 items-center justify-center px-6 py-2 rounded-full cursor-pointer">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-white"></i>
+            <span class="text-sm font-semibold text-white tracking-[0.28px]">Szenario erstellen</span>
+          </button>
+        </div>
+
+        <!-- Scenario cards -->
+        <div class="flex flex-wrap gap-4">
+
+          <!-- Wasserstoff-Integration -->
+          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
+            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
+              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Wasserstoff-Integration</span>
+              <i data-lucide="more-vertical" class="w-4 h-4 text-[#64748b] shrink-0"></i>
+            </div>
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <span class="bg-[#dcfce7] text-[#166534] text-[13px] font-semibold px-3 py-0.5 rounded-full">Berechnet</span>
+                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
+              </div>
+              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
+                <i data-lucide="chart-line" class="w-4 h-4 text-[#0e7490]"></i>
+                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PV-Integration -->
+          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
+            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
+              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">PV-Integration</span>
+              <i data-lucide="more-vertical" class="w-4 h-4 text-[#64748b]"></i>
+            </div>
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <span class="bg-[#dcfce7] text-[#166534] text-[13px] font-semibold px-3 py-0.5 rounded-full">Berechnet</span>
+                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
+              </div>
+              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
+                <i data-lucide="chart-line" class="w-4 h-4 text-[#0e7490]"></i>
+                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Ziel 2035 -->
+          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
+            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
+              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Ziel 2035</span>
+              <i data-lucide="more-vertical" class="w-4 h-4 text-[#64748b]"></i>
+            </div>
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <span class="bg-[#fef3c7] text-[#92400e] text-[13px] font-semibold px-3 py-0.5 rounded-full">In Bearbeitung</span>
+                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
+              </div>
+              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
+                <i data-lucide="chart-line" class="w-4 h-4 text-[#0e7490]"></i>
+                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Ziel 2030 -->
+          <div class="bg-white border border-[#e2e8f0] [box-shadow:0px_1px_2px_rgba(0,0,0,0.1)] flex flex-col p-6 rounded-[8px] w-[437px] gap-6">
+            <div class="border-b border-[#e2e8f0] flex items-center justify-between pb-4">
+              <span class="text-[20px] font-bold text-[#0e7490] leading-normal">Ziel 2030</span>
+              <i data-lucide="more-vertical" class="w-4 h-4 text-[#64748b]"></i>
+            </div>
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <span class="bg-[#fef3c7] text-[#92400e] text-[13px] font-semibold px-3 py-0.5 rounded-full">In Bearbeitung</span>
+                <span class="text-[13px] text-[#64748b]">Zuletzt aktualisert: 23.06.2026</span>
+              </div>
+              <button class="border border-[#0e7490] flex gap-3 items-center justify-center px-6 py-2 rounded-full w-full cursor-pointer">
+                <i data-lucide="chart-line" class="w-4 h-4 text-[#0e7490]"></i>
+                <span class="text-sm font-semibold text-[#0e7490] tracking-[0.28px]">Ergebnisse</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      </div>
     </main>
+
+    <script>lucide.createIcons();</script>
   </body>
 </html>
