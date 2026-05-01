@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Westhafen – Enetra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body class="bg-slate-50 font-[Inter,sans-serif] text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 flex h-14 items-center justify-between px-6 shrink-0">
+      <img
+        src="/images/enetra-logo.png"
+        alt="Enetra"
+        class="h-5 w-32 object-contain"
+      />
+      <nav class="flex gap-6 items-center">
+        <span class="text-sm text-slate-800">Projekte</span>
+        <div class="flex gap-2 items-center">
+          <i data-lucide="user-circle" class="w-4 h-4 text-slate-800"></i>
+          <span class="text-sm text-slate-800">Mein Konto</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-6 lg:px-12 py-12 flex-1">
+      <div class="max-w-[1344px] mx-auto w-full flex flex-col gap-8">
+
+        <!-- Breadcrumb -->
+        <a class="flex items-center gap-2" href="projects.html">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span class="text-sm font-semibold text-slate-500">Zurück zu Projekte</span>
+        </a>
+
+        <!-- Project Info -->
+        <div class="flex flex-col gap-2">
+          <h1 class="text-3xl font-bold leading-normal text-slate-800">Westhafen</h1>
+          <div class="flex gap-6 items-center">
+            <div class="flex gap-2 items-center">
+              <i data-lucide="map-pin" class="w-5 h-5 text-slate-500"></i>
+              <span class="text-sm text-slate-500">Berlin</span>
+              <span class="text-sm text-slate-500">(52.5385, 13.3367)</span>
+            </div>
+            <div class="flex gap-2 items-center">
+              <i data-lucide="calendar" class="w-4 h-4 text-slate-500"></i>
+              <span class="text-sm text-slate-500">Geändert: 27.06.2026</span>
+            </div>
+            <div class="flex gap-2 items-center">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M5.99996 8.00004C6.65923 8.00004 7.3037 7.80455 7.85186 7.43827C8.40002 7.072 8.82727 6.55141 9.07956 5.94232C9.33185 5.33323 9.39786 4.66301 9.26924 4.01641C9.14063 3.3698 8.82316 2.77586 8.35698 2.30969C7.89081 1.84351 7.29686 1.52604 6.65026 1.39742C6.00366 1.26881 5.33344 1.33482 4.72435 1.58711C4.11526 1.8394 3.59467 2.26664 3.22839 2.81481C2.86212 3.36297 2.66663 4.00744 2.66663 4.66671C2.66663 5.55076 3.01782 6.39861 3.64294 7.02373C4.26806 7.64885 5.1159 8.00004 5.99996 8.00004ZM5.99996 2.66671C6.39552 2.66671 6.7822 2.78401 7.1111 3.00377C7.44 3.22353 7.69634 3.53589 7.84772 3.90134C7.99909 4.26679 8.0387 4.66893 7.96153 5.05689C7.88436 5.44485 7.69388 5.80122 7.41417 6.08092C7.13447 6.36063 6.7781 6.55111 6.39014 6.62828C6.00218 6.70545 5.60004 6.66584 5.23459 6.51447C4.86914 6.36309 4.55678 6.10675 4.33702 5.77785C4.11726 5.44895 3.99996 5.06227 3.99996 4.66671C3.99996 4.13628 4.21067 3.62757 4.58575 3.2525C4.96082 2.87742 5.46953 2.66671 5.99996 2.66671ZM7.99996 9.33338H3.99996C3.56222 9.33338 3.12877 9.41959 2.72435 9.58711C2.31993 9.75463 1.95247 10.0002 1.64294 10.3097C1.01782 10.9348 0.666626 11.7827 0.666626 12.6667V14C0.666626 14.1769 0.736864 14.3464 0.861888 14.4714C0.986912 14.5965 1.15648 14.6667 1.33329 14.6667H10.6666C10.8434 14.6667 11.013 14.5965 11.138 14.4714C11.2631 14.3464 11.3333 14.1769 11.3333 14V12.6667C11.3333 11.7827 10.9821 10.9348 10.357 10.3097C9.73186 9.68456 8.88401 9.33338 7.99996 9.33338ZM9.99996 13.3334H1.99996V12.6667C1.99996 12.1363 2.21067 11.6276 2.58575 11.2525C2.96082 10.8774 3.46953 10.6667 3.99996 10.6667H7.99996C8.53039 10.6667 9.0391 10.8774 9.41417 11.2525C9.78925 11.6276 9.99996 12.1363 9.99996 12.6667V13.3334ZM9.99996 8.00004V6.66671C10.5304 6.66671 11.0391 6.456 11.4142 6.08092C11.7892 5.70585 12 5.19714 12 4.66671C12 4.13628 11.7892 3.62757 11.4142 3.2525C11.0391 2.87742 10.5304 2.66671 9.99996 2.66671V1.33338C10.884 1.33338 11.7319 1.68457 12.357 2.30969C12.9821 2.93481 13.3333 3.78265 13.3333 4.66671C13.3333 5.55076 12.9821 6.39861 12.357 7.02373C11.7319 7.64885 10.884 8.00004 9.99996 8.00004ZM15.3333 12.6667V14C15.3333 14.1769 15.2631 14.3464 15.138 14.4714C15.013 14.5965 14.8434 14.6667 14.6666 14.6667H12.6666V13.3334H14V12.6667C14 12.1363 13.7892 11.6276 13.4142 11.2525C13.0391 10.8774 12.5304 10.6667 12 10.6667H11.4533V9.33338H12C12.4377 9.33338 12.8712 9.41959 13.2756 9.58711C13.68 9.75463 14.0475 10.0002 14.357 10.3097C14.6665 10.6192 14.912 10.9867 15.0796 11.3911C15.2471 11.7955 15.3333 12.229 15.3333 12.6667Z" fill="#0E7490"/>
+              </svg>
+              <span class="text-sm font-bold text-cyan-700">5 Nutzer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search, Sort + Grundszenario -->
+        <div class="border-b-2 border-slate-200 flex flex-col gap-6 pb-8">
+
+          <!-- Search row -->
+          <div class="flex gap-4 items-center">
+            <div class="w-80 h-10 bg-white px-4 py-3 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 flex items-center gap-4">
+              <i data-lucide="search" class="w-4 h-4 text-slate-500 shrink-0"></i>
+              <span class="text-sm text-slate-500">Szenarien durchsuchen...</span>
+            </div>
+            <div class="h-10 bg-white px-4 py-3 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 flex items-center gap-4 cursor-pointer">
+              <span class="text-sm font-semibold text-slate-800">Sortieren</span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-800"></i>
+            </div>
+          </div>
+
+          <!-- Grundszenario card -->
+          <div class="w-96 p-6 bg-cyan-50 rounded-lg shadow-[0px_1px_4px_0px_rgba(21,94,117,0.10)] outline outline-1 outline-offset-[-1px] outline-cyan-200 flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Grundszenario</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-cyan-800"></i>
+              </div>
+              <p class="text-sm text-cyan-800 leading-normal">
+                Basis-Szenario aus dem künftige Szenarien entwickelt werden können.
+              </p>
+            </div>
+            <button class="flex-1 px-6 py-2 bg-cyan-100 rounded-full flex justify-center items-center gap-3 cursor-pointer">
+              <i data-lucide="chart-line" class="w-4 h-4 text-cyan-800"></i>
+              <span class="text-sm font-semibold text-cyan-800 tracking-tight">Ergebnisse</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Technologie-Szenarien -->
+        <div class="flex flex-col gap-4">
+
+          <!-- Section header -->
+          <div class="flex items-center justify-between">
+            <span class="text-base font-bold text-slate-800">Technologie-Szenarien</span>
+            <button class="px-6 py-2 bg-cyan-700 rounded-full flex items-center gap-2 cursor-pointer">
+              <i data-lucide="plus-circle" class="w-4 h-4 text-white"></i>
+              <span class="text-sm font-semibold text-white tracking-tight">Szenario erstellen</span>
+            </button>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+
+            <!-- Wasserstoff-Integration -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Wasserstoff-Integration</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800 shrink-0"></i>
+              </div>
+              <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- PV-Integration -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">PV-Integration</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800"></i>
+              </div>
+              <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ziel 2035 -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Ziel 2035</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800"></i>
+              </div>
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ziel 2030 -->
+            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xl font-bold text-cyan-700 leading-normal">Ziel 2030</span>
+                <i data-lucide="more-vertical" class="w-4 h-4 text-slate-800"></i>
+              </div>
+              <div class="flex flex-col gap-6">
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
+                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                </div>
+                <button class="flex-1 px-6 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-700"></i>
+                  <span class="text-sm font-semibold text-cyan-700 tracking-tight">Ergebnisse</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 flex items-center justify-between px-6 h-12">
+      <img src="/images/enetra-logo.png" alt="Enetra" class="h-4 object-contain" />
+      <nav class="flex gap-6 items-center">
+        <a href="#" class="text-sm text-slate-500 hover:text-slate-800">Impressum</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-slate-800">Datenschutz</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-slate-800">Kontakt</a>
+      </nav>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
