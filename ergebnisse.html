@@ -9,7 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      .map-label-icon {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+    </style>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
@@ -126,7 +135,7 @@
         <div class="bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200">
 
           <!-- Card header -->
-          <div class="select-none flex items-center justify-between px-6 py-4">
+          <div class="select-none relative z-[1001] flex items-center justify-between px-6 py-4">
             <div class="flex items-center gap-4">
               <span class="text-base font-bold text-slate-800 uppercase">Flächenübersicht</span>
               <!-- Metric dropdown -->
@@ -135,16 +144,26 @@
                   <span class="text-sm text-slate-800" x-text="selected"></span>
                   <i data-lucide="chevron-down" class="w-4 h-4 text-slate-800"></i>
                 </button>
-                <div x-show="open" @click.outside="open = false" class="absolute left-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-10 min-w-full py-1">
+                <div x-show="open" @click.outside="open = false" class="absolute left-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-[1002] min-w-full py-1">
                   <button @click="selected = 'Stromerzeugung'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">Stromerzeugung</button>
                   <button @click="selected = 'Wärmeerzeugung'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">Wärmeerzeugung</button>
                   <button @click="selected = 'CO₂-Emissionen'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">CO₂-Emissionen</button>
                 </div>
               </div>
             </div>
-            <button class="select-none cursor-pointer text-slate-400 hover:text-slate-600 transition-colors duration-150">
-              <i data-lucide="ellipsis" class="w-5 h-5"></i>
-            </button>
+            <div class="relative" x-data="{ open: false }">
+              <button @click="open = !open" class="select-none cursor-pointer text-slate-400 hover:text-slate-600 transition-colors duration-150">
+                <i data-lucide="ellipsis" class="w-5 h-5"></i>
+              </button>
+              <div x-show="open" @click.outside="open = false" class="absolute right-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-[1002] py-1 w-48">
+                <button @click="open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3">
+                  <i data-lucide="download" class="w-4 h-4 shrink-0"></i> CSV herunterladen
+                </button>
+                <button @click="open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3">
+                  <i data-lucide="table" class="w-4 h-4 shrink-0"></i> Excel herunterladen
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Card body: map + side panel -->
@@ -238,6 +257,86 @@
           </div>
         </div>
 
+        <!-- Kostenanalyse -->
+        <div class="bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col">
+
+          <!-- Card header -->
+          <div class="select-none flex items-center justify-between px-6 py-4">
+            <span class="text-base font-bold text-slate-800 uppercase">Kostenanalyse</span>
+            <div class="relative" x-data="{ open: false }">
+              <button @click="open = !open" class="select-none cursor-pointer text-slate-400 hover:text-slate-600 transition-colors duration-150">
+                <i data-lucide="ellipsis" class="w-5 h-5"></i>
+              </button>
+              <div x-show="open" @click.outside="open = false" class="absolute right-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-10 py-1 w-48">
+                <button @click="open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3">
+                  <i data-lucide="download" class="w-4 h-4 shrink-0"></i> CSV herunterladen
+                </button>
+                <button @click="open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3">
+                  <i data-lucide="table" class="w-4 h-4 shrink-0"></i> Excel herunterladen
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 flex flex-col gap-6">
+
+            <!-- KPI mini-cards -->
+            <div class="grid grid-cols-3 gap-4">
+
+              <!-- Ist-Zustand -->
+              <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Ist-Zustand</span>
+                <div class="flex flex-col gap-0.5">
+                  <p class="font-bold text-slate-800 leading-none">
+                    <span class="text-[32px] leading-normal">316,2 </span><span class="text-sm font-normal leading-normal">Tsd. €/Jahr</span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Szenario -->
+              <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Szenario</span>
+                <div class="flex flex-col gap-0.5">
+                  <p class="font-bold text-slate-800 leading-none">
+                    <span class="text-[32px] leading-normal">187,3 </span><span class="text-sm font-normal leading-normal">Tsd. €/Jahr</span>
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-3 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">Investition 890 Tsd. €</span>
+                </div>
+              </div>
+
+              <!-- Einsparung -->
+              <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Einsparung</span>
+                <div class="flex flex-col gap-0.5">
+                  <p class="font-bold leading-none">
+                    <span class="text-[32px] leading-normal text-green-700">-128,9 </span><span class="text-sm font-normal leading-normal text-slate-500">Tsd. €/Jahr</span>
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-3 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">-40,7 %</span>
+                  <span class="px-3 py-0.5 rounded-full text-xs font-semibold bg-cyan-200 text-cyan-800">Amortisation -6,9 J.</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <p class="select-none text-sm font-semibold text-slate-500 mb-3">Jährliche Betriebskosten</p>
+                <div id="chart-waterfall" style="height: 320px;"></div>
+              </div>
+              <div>
+                <p class="select-none text-sm font-semibold text-slate-500 mb-3">Kumulierte Kosten</p>
+                <div id="chart-cumulative" style="height: 320px;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -259,64 +358,215 @@
         maxZoom: 20
       }).addTo(map);
 
-      const freiflachePolygons = [
-        [
-          [52.53820911852274, 13.336963750628302],
-          [52.538392579685755, 13.335657660186769],
-          [52.53820021262153, 13.335575663477437],
-          [52.538013188278775, 13.336887610826778],
-          [52.53820911852274, 13.336963750628302],
-        ],
-        [
-          [52.536532, 13.336697],
-          [52.536789, 13.334836],
-          [52.536513, 13.33473],
-          [52.536222, 13.336747],
-          [52.536532, 13.336697],
-        ],
+      const polygonData = [
+        { name: 'Freifläche 3', category: 'area',     variant: 'viewOnly', coords: [[52.53820911852274,13.336963750628302],[52.538392579685755,13.335657660186769],[52.53820021262153,13.335575663477437],[52.538013188278775,13.336887610826778],[52.53820911852274,13.336963750628302]] },
+        { name: 'Freifläche 1', category: 'area',     variant: 'default',  coords: [[52.536532,13.336697],[52.536789,13.334836],[52.536513,13.33473],[52.536222,13.336747],[52.536532,13.336697]] },
+        { name: 'Freifläche 2', category: 'area',     variant: 'viewOnly', coords: [[52.53705757704769,13.332920159563765],[52.53679582510043,13.334647879390019],[52.53653407159268,13.334580938215938],[52.53679776400946,13.332712960691614]] },
+        { name: 'Lagerhalle 1', category: 'building', variant: 'default',  coords: [[52.536576,13.33873],[52.536819,13.33697],[52.536617,13.336901],[52.536334,13.338668],[52.536576,13.33873]] },
+        { name: 'Hauptbüros',   category: 'building', variant: 'viewOnly', coords: [[52.537172,13.334709],[52.537315,13.333645],[52.537085,13.33356],[52.53694,13.334625],[52.537172,13.334709]] },
+        { name: 'Lagerhalle 2', category: 'building', variant: 'default',  coords: [[52.537553639359025,13.3390283106798],[52.53769435445921,13.338006280267033],[52.53747882861581,13.337909641288174],[52.53734345647075,13.338893601800182],[52.537553639359025,13.3390283106798]] },
+        { name: 'Büros',        category: 'building', variant: 'viewOnly', coords: [[52.537127,13.335034],[52.536902,13.336686],[52.536636,13.336590],[52.536851,13.334918]] },
+        { name: 'Lagerhalle 4', category: 'building', variant: 'default',  coords: [[52.53808024975064,13.33531497102652],[52.53783086458164,13.337086303402451],[52.53761210449515,13.337005379588323],[52.537866959891154,13.33523045059843]] },
       ];
 
-      const gebaudePolygons = [
-        [
-          [52.536576, 13.33873],
-          [52.536819, 13.33697],
-          [52.536617, 13.336901],
-          [52.536334, 13.338668],
-          [52.536576, 13.33873],
-        ],
-        [
-          [52.537172, 13.334709],
-          [52.537315, 13.333645],
-          [52.537085, 13.33356],
-          [52.53694, 13.334625],
-          [52.537172, 13.334709],
-        ],
-        [
-          [52.537553639359025, 13.3390283106798],
-          [52.53769435445921, 13.338006280267033],
-          [52.53747882861581, 13.337909641288174],
-          [52.53734345647075, 13.338893601800182],
-          [52.537553639359025, 13.3390283106798],
-        ],
-        [
-          [52.537127, 13.335034],
-          [52.536902, 13.336686],
-          [52.536636, 13.336590],
-          [52.536851, 13.334918]
-        ],
-        [
-          [52.53808024975064, 13.33531497102652],
-          [52.53783086458164, 13.337086303402451],
-          [52.53761210449515, 13.337005379588323],
-          [52.537866959891154, 13.33523045059843]
-        ]
-      ];
+      const baseStyles = {
+        'area-default':      { color: '#628308', fillColor: '#C6E474', fillOpacity: 0.8, weight: 1 },
+        'area-viewOnly':     { color: '#E7F1CC', fillColor: '#E7F1CC', fillOpacity: 0.6, weight: 0 },
+        'building-default':  { color: '#371798', fillColor: '#A78BFA', fillOpacity: 0.8, weight: 1 },
+        'building-viewOnly': { color: '#E3D9FF', fillColor: '#E3D9FF', fillOpacity: 0.6, weight: 0 },
+      };
 
-      const freiflacheStyle = { color: '#0e7490', fillColor: '#06b6d4', fillOpacity: 0.35, weight: 2 };
-      const gebaudeStyle    = { color: '#92400e', fillColor: '#f59e0b', fillOpacity: 0.35, weight: 2 };
+      function centroid(coords) {
+        const pts = coords.filter((c, i) =>
+          !(i > 0 && c[0] === coords[0][0] && c[1] === coords[0][1])
+        );
+        return [
+          pts.reduce((s, c) => s + c[0], 0) / pts.length,
+          pts.reduce((s, c) => s + c[1], 0) / pts.length,
+        ];
+      }
 
-      freiflachePolygons.forEach(coords => L.polygon(coords, freiflacheStyle).addTo(map));
-      gebaudePolygons.forEach(coords   => L.polygon(coords, gebaudeStyle).addTo(map));
+      function makeLabelIcon(name, opacity) {
+        const shadow = '-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff';
+        return L.divIcon({
+          html: `<span style="display:inline-block;font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#000;text-shadow:${shadow};white-space:nowrap;transform:translate(-50%,-50%);opacity:${opacity}">${name}</span>`,
+          className: 'map-label-icon',
+          iconSize: [0, 0],
+          iconAnchor: [0, 0],
+        });
+      }
+
+      const layers = [];
+      let selected = null;
+
+      function resetStyles() {
+        selected = null;
+        layers.forEach(({ poly, label, data }) => {
+          poly.setStyle(baseStyles[`${data.category}-${data.variant}`]);
+          const opacity = data.variant === 'default' ? 1 : 0.6;
+          label.getElement().querySelector('span').style.opacity = opacity;
+        });
+      }
+
+      function selectPoly(target) {
+        selected = target;
+        layers.forEach(({ poly, label, data }) => {
+          const span = label.getElement().querySelector('span');
+          if (poly === target.poly) {
+            poly.setStyle({ ...baseStyles[`${data.category}-${data.variant}`], color: '#5B21B6', weight: 4 });
+            span.style.opacity = 1;
+          } else if (data.variant === 'default') {
+            poly.setStyle({ ...baseStyles[`${data.category}-${data.variant}`], fillOpacity: 0.6 });
+            span.style.opacity = 0.6;
+          } else {
+            poly.setStyle({ ...baseStyles[`${data.category}-${data.variant}`], fillOpacity: 0.4 });
+            span.style.opacity = 0.4;
+          }
+        });
+      }
+
+      polygonData.forEach(data => {
+        const style = baseStyles[`${data.category}-${data.variant}`];
+        const poly  = L.polygon(data.coords, style).addTo(map);
+        const defaultOpacity = data.variant === 'default' ? 1 : 0.6;
+        const label = L.marker(centroid(data.coords), {
+          icon: makeLabelIcon(data.name, defaultOpacity),
+          interactive: false,
+          zIndexOffset: 500,
+        }).addTo(map);
+
+        const entry = { poly, label, data };
+        layers.push(entry);
+
+        if (data.variant === 'default') {
+          poly.on('click', e => {
+            L.DomEvent.stopPropagation(e);
+            selected && selected.poly === poly ? resetStyles() : selectPoly(entry);
+          });
+        }
+      });
+
+      map.on('click', resetStyles);
+    </script>
+    <script>
+      // Waterfall chart
+      const wfChart = echarts.init(document.getElementById('chart-waterfall'));
+      const wfCategories = ['Ist-Zustand', 'Strom', 'Wärme', 'CO₂-Kosten', 'Kraftstoffe', 'Ammoniak', 'Wasserstoff', 'Infrastruktur', 'Szenario 1'];
+      const wfPlaceholders = [0, 246, 206, 191, 179, 169, 169, 179, 0];
+      const wfBars = [316, 70, 40, 15, 12, 10, 10, 8, 187];
+      const wfSigned = [316, -70, -40, -15, -12, -10, +10, +8, 187];
+      const wfColors = ['#0E7490','#22C55E','#22C55E','#22C55E','#22C55E','#22C55E','#F97316','#F97316','#0E7490'];
+
+      wfChart.setOption({
+        grid: { top: 16, right: 16, bottom: 80, left: 16, containLabel: true },
+        xAxis: {
+          type: 'category',
+          data: wfCategories,
+          axisLabel: { rotate: 30, fontSize: 11, color: '#64748B', fontFamily: 'Inter, sans-serif', interval: 0 },
+          axisLine: { lineStyle: { color: '#E2E8F0' } },
+          axisTick: { show: false },
+        },
+        yAxis: {
+          type: 'value',
+          max: 380,
+          axisLabel: { formatter: v => v + ' T€', fontSize: 11, color: '#94A3B8', fontFamily: 'Inter, sans-serif' },
+          splitLine: { lineStyle: { color: '#F1F5F9' } },
+          axisLine: { show: false },
+          axisTick: { show: false },
+        },
+        series: [
+          {
+            type: 'bar',
+            stack: 'wf',
+            silent: true,
+            itemStyle: { color: 'transparent', borderColor: 'transparent' },
+            data: wfPlaceholders,
+          },
+          {
+            type: 'bar',
+            stack: 'wf',
+            barMaxWidth: 36,
+            data: wfBars.map((v, i) => ({
+              value: v,
+              itemStyle: { color: wfColors[i], borderRadius: i === 0 || i === 8 ? [3, 3, 0, 0] : (wfSigned[i] < 0 ? [0, 0, 3, 3] : [3, 3, 0, 0]) },
+            })),
+            label: {
+              show: true,
+              position: 'top',
+              formatter: params => {
+                const s = wfSigned[params.dataIndex];
+                if (params.dataIndex === 0 || params.dataIndex === 8) return s + ' T€';
+                return (s > 0 ? '+' : '') + s;
+              },
+              fontSize: 11,
+              color: '#475569',
+              fontFamily: 'Inter, sans-serif',
+            },
+          },
+        ],
+      });
+
+      // Cumulative cost line chart
+      const cumChart = echarts.init(document.getElementById('chart-cumulative'));
+      const cumYears = ['2032','2033','2034','2035','2036','2037','2038','2039','2040','2041','2042','2043','2044','2045','2046'];
+      const istData  = [316, 632, 948, 1264, 1580, 1896, 2212, 2528, 2844, 3160, 3476, 3792, 4108, 4424, 4740];
+      const szenData = [1077, 1264, 1451, 1638, 1825, 2012, 2199, 2386, 2573, 2760, 2947, 3134, 3321, 3508, 3695];
+
+      cumChart.setOption({
+        grid: { top: 16, right: 16, bottom: 40, left: 16, containLabel: true },
+        legend: { bottom: 0, textStyle: { fontSize: 11, color: '#64748B', fontFamily: 'Inter, sans-serif' } },
+        xAxis: {
+          type: 'category',
+          data: cumYears,
+          axisLabel: { fontSize: 11, color: '#94A3B8', fontFamily: 'Inter, sans-serif' },
+          axisLine: { lineStyle: { color: '#E2E8F0' } },
+          axisTick: { show: false },
+        },
+        yAxis: {
+          type: 'value',
+          max: 5000,
+          axisLabel: { formatter: v => v + ' T€', fontSize: 11, color: '#94A3B8', fontFamily: 'Inter, sans-serif' },
+          splitLine: { lineStyle: { color: '#F1F5F9' } },
+          axisLine: { show: false },
+          axisTick: { show: false },
+        },
+        series: [
+          {
+            name: 'Ist-Zustand',
+            type: 'line',
+            data: istData,
+            smooth: false,
+            lineStyle: { color: '#64748B', width: 2 },
+            itemStyle: { color: '#64748B' },
+            symbol: 'none',
+            markLine: {
+              silent: true,
+              symbol: ['none', 'none'],
+              lineStyle: { color: '#EF4444', type: 'dashed', width: 1.5 },
+              label: {
+                formatter: 'Amortisation\n~2038',
+                position: 'insideStartTop',
+                color: '#EF4444',
+                fontSize: 10,
+                fontFamily: 'Inter, sans-serif',
+              },
+              data: [{ xAxis: '2038' }],
+            },
+            markPoint: {
+              data: [{ coord: ['2038', 2206], symbol: 'circle', symbolSize: 8, itemStyle: { color: '#EF4444' }, label: { show: false } }],
+            },
+          },
+          {
+            name: 'Szenario 1',
+            type: 'line',
+            data: szenData,
+            smooth: false,
+            lineStyle: { color: '#0E7490', width: 2 },
+            itemStyle: { color: '#0E7490' },
+            symbol: 'none',
+          },
+        ],
+      });
     </script>
     <script>lucide.createIcons();</script>
   </body>
