@@ -8,6 +8,7 @@
 
 ## Page shell
 Every page shares the same header, footer, and main content wrapper. No exceptions.
+Exception: auth pages (login, register, forgot-password, reset-password) use the auth shell below instead.
 
 ```html
 <body class="bg-slate-50 font-[Inter,sans-serif] text-slate-800 min-h-screen flex flex-col">
@@ -16,6 +17,22 @@ Every page shares the same header, footer, and main content wrapper. No exceptio
   <div class="max-w-[1344px] mx-auto w-full flex flex-col gap-8">
 <footer class="select-none bg-white border-t border-slate-200 flex items-center justify-between px-6 h-12">
 ```
+
+## Auth shell
+No header or footer. Logo centered above a `max-w-sm` card. Use for all auth-related pages.
+
+```html
+<body class="bg-slate-50 font-[Inter,sans-serif] text-slate-800 min-h-screen flex flex-col items-center justify-center px-4 py-12">
+  <div class="w-full max-w-sm flex flex-col items-center gap-8">
+    <img src="/images/enetra-logo.png" alt="Enetra" class="h-6 object-contain" />
+    <div class="w-full p-8 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+```
+
+Form inputs: `h-10 bg-white px-4 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 flex items-center`
+Input label: `text-sm font-semibold text-slate-800`
+Full-width submit button: same primary button style with `w-full py-2.5 justify-center`.
+Password show/hide: two `<i>` tags with `x-show`, never `:data-lucide` (Lucide initialises once).
+Success states: `x-data="{ sent/saved: false }"` on the card, `<template x-if>` to swap content.
 
 ## Colors
 - Text primary: `text-slate-800`
