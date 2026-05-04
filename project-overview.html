@@ -57,10 +57,10 @@
           </div>
         </div>
 
-        <!-- Search, Sort + Grundszenario -->
-        <div class="border-b-2 border-slate-200 flex flex-col gap-6 pb-8">
+        <!-- Szenarien -->
+        <div class="border-t-2 border-slate-200 flex flex-col gap-6 pt-8" x-data="{ view: 'card' }">
 
-          <!-- Search row -->
+          <!-- Toolbar -->
           <div class="flex gap-4 items-center">
             <!-- Search input -->
             <div class="w-80 h-10 bg-white px-4 py-3 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 flex items-center gap-4">
@@ -78,222 +78,266 @@
                 <button @click="selected = 'Erstellt'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">Erstellt</button>
               </div>
             </div>
-          </div>
-
-          <!-- Grundszenario card -->
-          <div class="w-96 p-6 bg-cyan-50 rounded-lg shadow-[0px_1px_4px_0px_rgba(21,94,117,0.10)] outline outline-1 outline-offset-[-1px] outline-cyan-200 flex flex-col gap-6">
-            <div class="flex flex-col gap-2">
-              <div class="flex items-center justify-between">
-                <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Grundszenario</a>
-                <div class="relative" x-data="{ open: false }">
-                  <button @click="open = !open" class="select-none cursor-pointer text-cyan-800 hover:text-cyan-600 transition-colors duration-150">
-                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
-                  </button>
-                  <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
-                    </button>
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
-                    </button>
-                    <hr class="border-slate-200" />
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <p class="select-none text-sm text-cyan-800 leading-normal">
-                Basis-Szenario aus dem künftige Szenarien entwickelt werden können.
-              </p>
+            <!-- View toggle -->
+            <div class="flex items-center rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 overflow-hidden">
+              <button @click="view = 'card'" :class="view === 'card' ? 'bg-slate-100 text-slate-800' : 'bg-white text-slate-500 hover:bg-slate-50'" class="select-none h-10 w-10 flex items-center justify-center transition-colors duration-150 cursor-pointer">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              </button>
+              <button @click="view = 'table'" :class="view === 'table' ? 'bg-slate-100 text-slate-800' : 'bg-white text-slate-500 hover:bg-slate-50'" class="select-none h-10 w-10 flex items-center justify-center transition-colors duration-150 cursor-pointer border-l border-slate-400">
+                <i data-lucide="list" class="w-4 h-4"></i>
+              </button>
             </div>
-            <button class="select-none flex-1 px-6 py-2 bg-cyan-100 hover:bg-cyan-200 transition-colors duration-150 rounded-full flex justify-center items-center gap-3 cursor-pointer">
-              <i data-lucide="chart-line" class="w-4 h-4 text-cyan-800"></i>
-              <span class="text-sm font-semibold text-cyan-800 tracking-tight">Ergebnisse</span>
+            <!-- Create button -->
+            <button class="select-none ml-auto px-6 py-2 bg-cyan-700 hover:bg-cyan-800 transition-colors duration-150 rounded-full flex items-center gap-2 cursor-pointer">
+              <i data-lucide="plus-circle" class="w-4 h-4 text-white"></i>
+              <span class="text-sm font-semibold text-white tracking-tight">Technologie-Szenario erstellen</span>
             </button>
           </div>
 
-        </div>
-
-        <!-- Technologie-Szenarien -->
-        <div class="flex flex-col gap-4" x-data="{ view: 'card' }">
-
-          <!-- Section header -->
-          <div class="select-none flex items-center justify-between gap-4">
-            <span class="text-base font-bold text-slate-800">Technologie-Szenarien</span>
-            <div class="flex items-center gap-3 ml-auto">
-              <!-- View toggle -->
-              <div class="flex items-center rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-400 overflow-hidden">
-                <button @click="view = 'card'" :class="view === 'card' ? 'bg-slate-100 text-slate-800' : 'bg-white text-slate-500 hover:bg-slate-50'" class="select-none h-9 w-9 flex items-center justify-center transition-colors duration-150 cursor-pointer">
-                  <i data-lucide="layout-grid" class="w-4 h-4"></i>
-                </button>
-                <button @click="view = 'table'" :class="view === 'table' ? 'bg-slate-100 text-slate-800' : 'bg-white text-slate-500 hover:bg-slate-50'" class="select-none h-9 w-9 flex items-center justify-center transition-colors duration-150 cursor-pointer border-l border-slate-400">
-                  <i data-lucide="list" class="w-4 h-4"></i>
-                </button>
-              </div>
-              <button class="select-none px-6 py-2 bg-cyan-700 hover:bg-cyan-800 transition-colors duration-150 rounded-full flex items-center gap-2 cursor-pointer">
-                <i data-lucide="plus-circle" class="w-4 h-4 text-white"></i>
-                <span class="text-sm font-semibold text-white tracking-tight">Szenario erstellen</span>
-              </button>
-            </div>
-          </div>
-
           <!-- Card View -->
-          <div x-show="view === 'card'" x-transition:enter="transition-opacity duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="flex flex-wrap gap-4">
+          <div x-show="view === 'card'" x-transition:enter="transition-opacity duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="flex flex-col gap-4">
 
-            <!-- Wasserstoff-Integration -->
-            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
-              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
-                <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Wasserstoff-Integration</a>
-                <div class="relative" x-data="{ open: false }">
-                  <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
-                    <i data-lucide="more-vertical" class="w-4 h-4 shrink-0"></i>
-                  </button>
-                  <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
-                    </button>
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
-                    </button>
-                    <hr class="border-slate-200" />
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
-                    </button>
+            <!-- Grundszenario -->
+            <div class="grid grid-cols-3 gap-4">
+              <div class="p-6 bg-cyan-50 rounded-lg shadow-[0px_1px_4px_0px_rgba(21,94,117,0.10)] outline outline-1 outline-offset-[-1px] outline-cyan-200 flex flex-col gap-6">
+                <div class="flex flex-col gap-2">
+                  <div class="flex items-center justify-between">
+                    <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Grundszenario</a>
+                    <div class="relative" x-data="{ open: false }">
+                      <button @click="open = !open" class="select-none cursor-pointer text-cyan-800 hover:text-cyan-600 transition-colors duration-150">
+                        <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                      </button>
+                      <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
+                        <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                          <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                        </button>
+                        <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                          <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
+                        </button>
+                        <hr class="border-slate-200" />
+                        <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
+                          <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
+                        </button>
+                      </div>
+                    </div>
                   </div>
+                  <p class="select-none text-sm text-cyan-800 leading-normal">Basis-Szenario aus dem künftige Szenarien entwickelt werden können.</p>
                 </div>
-              </div>
-              <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
-                <div class="select-none flex items-center justify-between">
-                  <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
-                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
-                </div>
-                <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
-                  <i data-lucide="chart-line" class="w-4 h-4"></i>
-                  <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
+                <button class="select-none flex-1 px-6 py-2 bg-cyan-100 hover:bg-cyan-200 transition-colors duration-150 rounded-full flex justify-center items-center gap-3 cursor-pointer">
+                  <i data-lucide="chart-line" class="w-4 h-4 text-cyan-800"></i>
+                  <span class="text-sm font-semibold text-cyan-800 tracking-tight">Ergebnisse</span>
                 </button>
               </div>
             </div>
 
-            <!-- PV-Integration -->
-            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
-              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
-                <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">PV-Integration</a>
-                <div class="relative" x-data="{ open: false }">
-                  <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
-                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
-                  </button>
-                  <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+            <!-- Technologie-Szenarien label -->
+            <span class="select-none text-base font-bold text-slate-800">Technologie-Szenarien</span>
+
+            <!-- Technologie-Szenarien cards -->
+            <div class="grid grid-cols-3 gap-4">
+
+              <!-- Wasserstoff-Integration -->
+              <div class="p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
+                <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                  <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Wasserstoff-Integration</a>
+                  <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
+                      <i data-lucide="more-vertical" class="w-4 h-4 shrink-0"></i>
                     </button>
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
-                    </button>
-                    <hr class="border-slate-200" />
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
-                    </button>
+                    <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                      </button>
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
+                      </button>
+                      <hr class="border-slate-200" />
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
-                <div class="select-none flex items-center justify-between">
-                  <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
-                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
-                </div>
-                <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
-                  <i data-lucide="chart-line" class="w-4 h-4"></i>
-                  <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Ziel 2035 -->
-            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
-              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
-                <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Ziel 2035</a>
-                <div class="relative" x-data="{ open: false }">
-                  <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
-                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
+                  <div class="select-none flex items-center justify-between">
+                    <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                    <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                  </div>
+                  <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
+                    <i data-lucide="chart-line" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
                   </button>
-                  <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                </div>
+              </div>
+
+              <!-- PV-Integration -->
+              <div class="p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col justify-between">
+                <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                  <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">PV-Integration</a>
+                  <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
+                      <i data-lucide="more-vertical" class="w-4 h-4"></i>
                     </button>
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
-                    </button>
-                    <hr class="border-slate-200" />
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
-                    </button>
+                    <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                      </button>
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
+                      </button>
+                      <hr class="border-slate-200" />
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex flex-col gap-6">
-                <div class="select-none flex items-center justify-between">
-                  <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
-                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
-                </div>
-                <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
-                  <i data-lucide="chart-line" class="w-4 h-4"></i>
-                  <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Ziel 2030 -->
-            <div class="w-96 self-stretch p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
-              <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
-                <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Ziel 2030</a>
-                <div class="relative" x-data="{ open: false }">
-                  <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
-                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                <div class="flex-1 pt-6 flex flex-col justify-between gap-6">
+                  <div class="select-none flex items-center justify-between">
+                    <span class="px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                    <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                  </div>
+                  <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
+                    <i data-lucide="chart-line" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
                   </button>
-                  <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                </div>
+              </div>
+
+              <!-- Ziel 2035 -->
+              <div class="p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+                <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                  <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Ziel 2035</a>
+                  <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
+                      <i data-lucide="more-vertical" class="w-4 h-4"></i>
                     </button>
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
-                    </button>
-                    <hr class="border-slate-200" />
-                    <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
-                      <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
-                    </button>
+                    <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                      </button>
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
+                      </button>
+                      <hr class="border-slate-200" />
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex flex-col gap-6">
-                <div class="select-none flex items-center justify-between">
-                  <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
-                  <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                <div class="flex flex-col gap-6">
+                  <div class="select-none flex items-center justify-between">
+                    <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
+                    <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                  </div>
+                  <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
+                    <i data-lucide="chart-line" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
+                  </button>
                 </div>
-                <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
-                  <i data-lucide="chart-line" class="w-4 h-4"></i>
-                  <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
-                </button>
               </div>
-            </div>
 
+              <!-- Ziel 2030 -->
+              <div class="p-6 bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-6">
+                <div class="pb-4 border-b border-slate-200 flex items-center justify-between">
+                  <a href="#" class="select-none text-xl font-bold text-cyan-700 leading-normal hover:underline">Ziel 2030</a>
+                  <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="select-none cursor-pointer text-slate-800 hover:text-slate-500 transition-colors duration-150">
+                      <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                    </button>
+                    <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                      </button>
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
+                      </button>
+                      <hr class="border-slate-200" />
+                      <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
+                        <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-6">
+                  <div class="select-none flex items-center justify-between">
+                    <span class="px-3 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">In Bearbeitung</span>
+                    <span class="text-xs text-slate-500">Zuletzt aktualisert: 23.06.2026</span>
+                  </div>
+                  <button class="select-none flex-1 px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer">
+                    <i data-lucide="chart-line" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold tracking-tight">Ergebnisse</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
           </div>
 
           <!-- Table View -->
-          <div x-show="view === 'table'" x-transition:enter="transition-opacity duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="bg-white rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200">
+          <div x-show="view === 'table'" x-transition:enter="transition-opacity duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="rounded-lg shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200">
             <table class="w-full text-sm text-left border-collapse">
               <thead>
-                <tr class="border-b border-slate-200">
+                <tr class="border-b border-slate-200 bg-white">
                   <th class="select-none px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</th>
                   <th class="select-none px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
                   <th class="select-none px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Zuletzt aktualisiert</th>
                   <th class="select-none px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider"></th>
                 </tr>
               </thead>
+              <tbody class="divide-y divide-cyan-200">
+
+                <!-- Grundszenario row -->
+                <tr class="bg-cyan-50 hover:bg-cyan-100 transition-colors duration-100">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <a href="#" class="select-none font-semibold text-cyan-700 hover:underline">Grundszenario</a>
+                      <span class="select-none px-2 py-0.5 bg-cyan-200 text-cyan-800 text-xs font-semibold rounded-full">Basis</span>
+                    </div>
+                    <p class="select-none text-xs text-cyan-700 mt-0.5">Basis-Szenario aus dem künftige Szenarien entwickelt werden können.</p>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="select-none px-3 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Berechnet</span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="select-none flex items-center gap-2 text-cyan-700">
+                      <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
+                      <span>27.06.2026</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center justify-end gap-3">
+                      <button class="select-none flex items-center gap-2 px-4 py-1.5 bg-cyan-100 hover:bg-cyan-200 text-cyan-800 rounded-full transition-colors duration-150 cursor-pointer whitespace-nowrap">
+                        <i data-lucide="chart-line" class="w-3.5 h-3.5"></i>
+                        <span class="text-xs font-semibold tracking-tight">Ergebnisse</span>
+                      </button>
+                      <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="select-none cursor-pointer text-cyan-800 hover:text-cyan-600 transition-colors duration-150">
+                          <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                        </button>
+                        <div x-show="open" @click.outside="open = false" class="absolute right-0 top-6 mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] z-10 flex flex-col w-48">
+                          <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                            <i data-lucide="copy" class="w-4 h-4 shrink-0"></i> Projekt duplizieren
+                          </button>
+                          <button class="select-none flex items-center p-3 gap-3 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 w-full text-left rounded">
+                            <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Nutzer verwalten
+                          </button>
+                          <hr class="border-slate-200" />
+                          <button class="select-none flex items-center p-3 gap-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-150 w-full text-left rounded">
+                            <i data-lucide="trash-2" class="w-4 h-4 shrink-0"></i> Projekt löschen
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
               <tbody class="divide-y divide-slate-100">
 
                 <!-- Wasserstoff-Integration row -->
-                <tr class="hover:bg-slate-50 transition-colors duration-100">
+                <tr class="bg-white hover:bg-slate-50 transition-colors duration-100">
                   <td class="px-6 py-4">
                     <a href="#" class="select-none font-semibold text-cyan-700 hover:underline">Wasserstoff-Integration</a>
                   </td>
@@ -334,7 +378,7 @@
                 </tr>
 
                 <!-- PV-Integration row -->
-                <tr class="hover:bg-slate-50 transition-colors duration-100">
+                <tr class="bg-white hover:bg-slate-50 transition-colors duration-100">
                   <td class="px-6 py-4">
                     <a href="#" class="select-none font-semibold text-cyan-700 hover:underline">PV-Integration</a>
                   </td>
@@ -375,7 +419,7 @@
                 </tr>
 
                 <!-- Ziel 2035 row -->
-                <tr class="hover:bg-slate-50 transition-colors duration-100">
+                <tr class="bg-white hover:bg-slate-50 transition-colors duration-100">
                   <td class="px-6 py-4">
                     <a href="#" class="select-none font-semibold text-cyan-700 hover:underline">Ziel 2035</a>
                   </td>
@@ -416,7 +460,7 @@
                 </tr>
 
                 <!-- Ziel 2030 row -->
-                <tr class="hover:bg-slate-50 transition-colors duration-100">
+                <tr class="bg-white hover:bg-slate-50 transition-colors duration-100">
                   <td class="px-6 py-4">
                     <a href="#" class="select-none font-semibold text-cyan-700 hover:underline">Ziel 2030</a>
                   </td>
