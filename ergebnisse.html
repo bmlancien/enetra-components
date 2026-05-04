@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
@@ -120,6 +122,122 @@
           </div>
         </div>
 
+        <!-- Flächenübersicht -->
+        <div class="bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200">
+
+          <!-- Card header -->
+          <div class="select-none flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-4">
+              <span class="text-base font-bold text-slate-800 uppercase">Flächenübersicht</span>
+              <!-- Metric dropdown -->
+              <div class="relative" x-data="{ open: false, selected: 'Stromerzeugung' }">
+                <button @click="open = !open" class="select-none h-10 bg-white hover:bg-slate-50 transition-colors duration-150 px-4 py-3 rounded-[3px] outline outline-1 outline-offset-[-1px] outline-slate-300 flex items-center gap-2 cursor-pointer">
+                  <span class="text-sm text-slate-800" x-text="selected"></span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-800"></i>
+                </button>
+                <div x-show="open" @click.outside="open = false" class="absolute left-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-10 min-w-full py-1">
+                  <button @click="selected = 'Stromerzeugung'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">Stromerzeugung</button>
+                  <button @click="selected = 'Wärmeerzeugung'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">Wärmeerzeugung</button>
+                  <button @click="selected = 'CO₂-Emissionen'; open = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150">CO₂-Emissionen</button>
+                </div>
+              </div>
+            </div>
+            <button class="select-none cursor-pointer text-slate-400 hover:text-slate-600 transition-colors duration-150">
+              <i data-lucide="ellipsis" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Card body: map + side panel -->
+          <div class="flex border-t border-slate-200">
+
+            <!-- Leaflet map -->
+            <div id="flaechen-map" class="flex-1 rounded-bl-lg" style="height: 480px;"></div>
+
+            <!-- Side panel -->
+            <div class="w-[351px] shrink-0 border-l border-slate-200 p-6 flex flex-col gap-6 rounded-br-lg" x-data="{ details: true }">
+
+              <!-- Total -->
+              <div class="flex flex-col gap-2">
+                <span class="select-none text-sm font-semibold text-slate-800">Gesamtstromerzeugung</span>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0 self-center"></span>
+                  <span class="text-[20px] font-semibold text-slate-800 leading-normal">1.983</span>
+                  <span class="text-sm font-normal text-slate-500">MWh</span>
+                </div>
+              </div>
+
+              <!-- Location breakdown -->
+              <div class="flex flex-col gap-4">
+
+                <!-- Details toggle -->
+                <button @click="details = !details" class="select-none flex items-center justify-end gap-1.5 text-slate-500 hover:text-slate-800 transition-colors duration-150 cursor-pointer w-full">
+                  <span class="text-sm">Details</span>
+                  <i data-lucide="chevron-up" class="w-4 h-4 transition-transform duration-150" :class="details ? '' : 'rotate-180'"></i>
+                </button>
+
+                <div x-show="details" class="flex flex-col gap-3">
+
+                  <!-- Freifläche 3 -->
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-slate-800">Freifläche 3</span>
+                      <span class="text-sm font-semibold text-slate-800">970 <span class="text-sm font-normal text-slate-500">MWh</span></span>
+                    </div>
+                    <div class="relative h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <div class="absolute inset-y-0 left-0 bg-cyan-400 rounded-full" style="width: 100%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Lagerhalle 1 -->
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-slate-800">Lagerhalle 1</span>
+                      <span class="text-sm font-semibold text-slate-800">438 <span class="text-sm font-normal text-slate-500">MWh</span></span>
+                    </div>
+                    <div class="relative h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <div class="absolute inset-y-0 left-0 bg-cyan-400 rounded-full" style="width: 45%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Lagerhalle 2 -->
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-slate-800">Lagerhalle 2</span>
+                      <span class="text-sm font-semibold text-slate-800">389 <span class="text-sm font-normal text-slate-500">MWh</span></span>
+                    </div>
+                    <div class="relative h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <div class="absolute inset-y-0 left-0 bg-cyan-400 rounded-full" style="width: 40%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Lagerhalle 3 -->
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-slate-800">Lagerhalle 3</span>
+                      <span class="text-sm font-semibold text-slate-800">200 <span class="text-sm font-normal text-slate-500">MWh</span></span>
+                    </div>
+                    <div class="relative h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <div class="absolute inset-y-0 left-0 bg-cyan-400 rounded-full" style="width: 21%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Büros -->
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-slate-800">Büros</span>
+                      <span class="text-sm font-semibold text-slate-800">98 <span class="text-sm font-normal text-slate-500">MWh</span></span>
+                    </div>
+                    <div class="relative h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <div class="absolute inset-y-0 left-0 bg-cyan-400 rounded-full" style="width: 10%"></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -133,6 +251,73 @@
       </nav>
     </footer>
 
+    <script>
+      const map = L.map('flaechen-map', { zoomControl: true }).setView([52.537, 13.335], 17);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }).addTo(map);
+
+      const freiflachePolygons = [
+        [
+          [52.53820911852274, 13.336963750628302],
+          [52.538392579685755, 13.335657660186769],
+          [52.53820021262153, 13.335575663477437],
+          [52.538013188278775, 13.336887610826778],
+          [52.53820911852274, 13.336963750628302],
+        ],
+        [
+          [52.536532, 13.336697],
+          [52.536789, 13.334836],
+          [52.536513, 13.33473],
+          [52.536222, 13.336747],
+          [52.536532, 13.336697],
+        ],
+      ];
+
+      const gebaudePolygons = [
+        [
+          [52.536576, 13.33873],
+          [52.536819, 13.33697],
+          [52.536617, 13.336901],
+          [52.536334, 13.338668],
+          [52.536576, 13.33873],
+        ],
+        [
+          [52.537172, 13.334709],
+          [52.537315, 13.333645],
+          [52.537085, 13.33356],
+          [52.53694, 13.334625],
+          [52.537172, 13.334709],
+        ],
+        [
+          [52.537553639359025, 13.3390283106798],
+          [52.53769435445921, 13.338006280267033],
+          [52.53747882861581, 13.337909641288174],
+          [52.53734345647075, 13.338893601800182],
+          [52.537553639359025, 13.3390283106798],
+        ],
+        [
+          [52.537127, 13.335034],
+          [52.536902, 13.336686],
+          [52.536636, 13.336590],
+          [52.536851, 13.334918]
+        ],
+        [
+          [52.53808024975064, 13.33531497102652],
+          [52.53783086458164, 13.337086303402451],
+          [52.53761210449515, 13.337005379588323],
+          [52.537866959891154, 13.33523045059843]
+        ]
+      ];
+
+      const freiflacheStyle = { color: '#0e7490', fillColor: '#06b6d4', fillOpacity: 0.35, weight: 2 };
+      const gebaudeStyle    = { color: '#92400e', fillColor: '#f59e0b', fillOpacity: 0.35, weight: 2 };
+
+      freiflachePolygons.forEach(coords => L.polygon(coords, freiflacheStyle).addTo(map));
+      gebaudePolygons.forEach(coords   => L.polygon(coords, gebaudeStyle).addTo(map));
+    </script>
     <script>lucide.createIcons();</script>
   </body>
 </html>
