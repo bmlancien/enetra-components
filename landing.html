@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enetra – Energiedaten intelligent nutzen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body class="font-[Inter,sans-serif] text-slate-800 min-h-screen flex flex-col bg-white">
+
+    <!-- Navbar -->
+    <header class="select-none bg-white border-b border-slate-200 flex items-center justify-between px-6 py-4 shrink-0">
+      <img src="/images/enetra-logo.png" alt="Enetra" class="h-5 w-32 object-contain" />
+      <nav class="flex items-center gap-8">
+        <a href="#so-funktionierts" class="text-sm font-bold text-slate-500 uppercase tracking-[0.28px] hover:text-slate-800 transition-colors duration-150">So funktioniert's</a>
+        <a href="#ueber-das-projekt" class="text-sm font-bold text-slate-500 uppercase tracking-[0.28px] hover:text-slate-800 transition-colors duration-150">Über das Projekt</a>
+        <a href="/login.html" class="flex items-center gap-2 text-sm font-bold text-slate-500 uppercase tracking-[0.28px] hover:text-slate-800 transition-colors duration-150">
+          <i data-lucide="circle-user" class="w-4 h-4"></i>
+          Anmelden
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+
+      <!-- Hero section -->
+      <section class="bg-cyan-700">
+
+        <!-- Two-column content, max 1440px centered -->
+        <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row">
+
+          <!-- Left: text + badge -->
+          <div class="flex-1 flex flex-col gap-12 lg:justify-end pt-16 lg:pt-24 pb-12 px-6 sm:px-10 lg:px-12">
+
+            <!-- Text block -->
+            <div class="flex flex-col gap-6">
+              <p class="text-sm font-medium text-white/80 uppercase tracking-[0.28px]">
+                Reiner Lemoine Institut · Forschungsprojekt
+              </p>
+              <h1 class="text-white font-extrabold text-[36px] leading-[44px] sm:text-[46px] sm:leading-[54px] lg:text-[54px] lg:leading-[60px]">
+                Die Energiewende<br />im Binnenhafen<br />systematisch planen
+              </h1>
+              <p class="text-white text-base sm:text-lg leading-7 max-w-lg lg:max-w-none">
+                ENETRA ist ein webbasiertes Energie-Transformations-Assistent, das Hafenbetreiber dabei unterstützt, den Weg zu 100 % erneuerbarer Energie strukturiert zu analysieren, zu modellieren und zu gestalten.
+              </p>
+              <div class="flex flex-wrap gap-4 items-center">
+                <a href="/login.html" class="select-none px-8 lg:px-10 py-3 lg:py-4 bg-white text-cyan-700 rounded-full text-base lg:text-xl font-semibold uppercase tracking-[0.4px] hover:bg-slate-100 transition-colors duration-150 shrink-0">
+                  Tool öffnen
+                </a>
+                <a href="#so-funktionierts" class="select-none px-8 lg:px-10 py-3 lg:py-4 text-white rounded-full text-base lg:text-xl uppercase tracking-[0.4px] outline outline-1 outline-white hover:bg-white/10 transition-colors duration-150 shrink-0">
+                  Mehr erfahren
+                </a>
+              </div>
+            </div>
+
+            <!-- Pilot badge -->
+            <div class="bg-cyan-600/50 border border-cyan-600 rounded-[4px] px-4 pt-1.5 pb-3 flex flex-col max-w-[477px]">
+              <p class="text-sm font-bold text-white leading-7">Pilotprojekt: BEHALA Westhafen Berlin</p>
+              <p class="text-[13px] text-white leading-6">Entwickelt und erprobt mit Hafenstakeholdern</p>
+            </div>
+
+          </div>
+
+          <!-- Right: app screenshot -->
+          <div class="flex-1 flex items-center justify-center py-10 lg:py-12 px-6 sm:px-10 lg:px-12">
+            <img
+              src="/images/hero-app-screenshot.png"
+              alt="ENETRA App Screenshot"
+              class="w-full max-w-[468px] rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
+            />
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Wave transition: cyan → white -->
+      <img src="/images/wave-green-sm-white-lg.svg" alt="" class="block w-full" />
+
+    </main>
+
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
