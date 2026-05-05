@@ -143,6 +143,63 @@
       <!-- Wave transition: white → grey -->
       <img src="/images/wave-white-lg-grey-sm.svg" alt="" class="block w-full" />
 
+      <!-- So funktioniert's section -->
+      <section class="bg-slate-100" id="so-funktionierts">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 py-16 lg:py-24">
+          <div class="max-w-[1200px] mx-auto flex flex-col gap-6">
+
+            <!-- Section header -->
+            <div class="flex flex-col gap-4">
+              <p class="text-cyan-700 text-sm font-medium uppercase tracking-[0.28px]">So funktioniert's</p>
+              <h2 class="font-extrabold text-[32px] sm:text-[40px] leading-[1.2] text-slate-900">In vier Schritten zum Energiekonzept</h2>
+              <p class="text-[18px] leading-7 text-slate-500 max-w-[688px]">ENETRA bildet den gesamten Planungsprozess ab – von der Bestandsaufnahme über die Szenarioentwicklung bis zur Berechnung und Ergebnisdarstellung. Ohne Vorkenntnisse in Energiemodellierung.</p>
+            </div>
+
+            <!-- Two-column content -->
+            <div class="flex flex-col lg:flex-row gap-6 items-start pt-2" x-data="{ active: 1 }">
+
+              <!-- Left: step cards -->
+              <div class="w-full lg:w-[37%] shrink-0 rounded-lg border border-slate-300 divide-y divide-slate-300 overflow-hidden">
+
+                <template x-for="step in [
+                  { n: 1, title: 'Ist-Zustand erfassen',     body: 'Gebäude und Freiflächen auf einer interaktiven Karte anlegen, Gebäudetypen definieren, bestehende Energietechnik, Lastprofile und Netzanschlüsse eintragen.' },
+                  { n: 2, title: 'Szenario erstellen',        body: 'Neue Technologien wie PV-Anlagen, Wärmepumpen oder Elektrolyseure flächengenau zuordnen. Der Ist-Zustand bleibt dabei unverändert.' },
+                  { n: 3, title: 'Parameter konfigurieren',   body: 'Investitionskosten, Leistung und Wirkungsgrade flächen- oder komponentenweise festlegen. Vorlagen aus der Bibliothek ermöglichen Bulk-Editing über mehrere Flächen.' },
+                  { n: 4, title: 'Berechnen &amp; entscheiden', body: 'Energetische und wirtschaftliche Kennzahlen werden automatisch berechnet. Szenarien lassen sich vergleichen, um fundierte Investitionsentscheidungen zu treffen.' }
+                ]" :key="step.n">
+                  <div
+                    class="p-4 flex flex-col gap-2 cursor-pointer transition-colors duration-150"
+                    :class="active === step.n ? 'bg-white' : 'bg-slate-100 hover:bg-slate-50'"
+                    @click="active = step.n"
+                  >
+                    <div class="flex items-center gap-3 font-bold text-lg leading-6">
+                      <span class="shrink-0 transition-colors duration-150" :class="active === step.n ? 'text-slate-500' : 'text-slate-400'" x-text="String(step.n).padStart(2, '0')"></span>
+                      <span class="transition-colors duration-150" :class="active === step.n ? 'text-slate-900' : 'text-slate-500'" x-text="step.title"></span>
+                    </div>
+                    <p class="text-sm leading-[22px] transition-colors duration-150" :class="active === step.n ? 'text-slate-700' : 'text-slate-500'" x-text="step.body"></p>
+                  </div>
+                </template>
+
+              </div>
+
+              <!-- Right: app screenshot -->
+              <div class="flex-1 rounded-lg border border-slate-300 overflow-hidden">
+                <img
+                  :src="`/images/how-it-works-${active}.png`"
+                  :alt="`ENETRA – Schritt ${active}`"
+                  class="w-full h-full object-cover block"
+                  style="aspect-ratio: 732 / 521"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wave transition: grey → cyan -->
+      <img src="/images/wave-grey-sm-green-lg.svg" alt="" class="block w-full" />
+
     </main>
 
     <script>lucide.createIcons();</script>
