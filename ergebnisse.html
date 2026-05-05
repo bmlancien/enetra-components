@@ -73,7 +73,10 @@
 
             <!-- CO₂-Emissionen -->
             <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-4">
-              <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">CO₂-Emissionen</span>
+              <div class="flex items-center gap-2">
+                <i data-lucide="leaf" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">CO₂-Emissionen</span>
+              </div>
               <div class="flex flex-col gap-1">
                 <p class="font-bold text-slate-800 leading-none">
                   <span class="text-[32px] leading-normal">142,2 </span><span class="text-sm font-normal leading-normal">t/Jahr</span>
@@ -89,7 +92,10 @@
 
             <!-- Energiekosten -->
             <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-4">
-              <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Energiekosten</span>
+              <div class="flex items-center gap-2">
+                <i data-lucide="banknote" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Energiekosten</span>
+              </div>
               <div class="flex flex-col gap-1">
                 <p class="font-bold text-slate-800 leading-none">
                   <span class="text-[32px] leading-normal">187,3 </span><span class="text-sm font-normal leading-normal">€/Jahr</span>
@@ -105,7 +111,10 @@
 
             <!-- Eigenversorgungsgrad -->
             <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-4">
-              <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Eigenversorgungsgrad</span>
+              <div class="flex items-center gap-2">
+                <i data-lucide="zap" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Eigenversorgungsgrad</span>
+              </div>
               <div class="flex flex-col gap-1">
                 <p class="font-bold text-slate-800 leading-none">
                   <span class="text-[32px] leading-normal">73,7 </span><span class="text-sm font-normal leading-normal">%</span>
@@ -121,10 +130,95 @@
 
             <!-- Zielerreichung -->
             <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-4">
-              <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Zielerreichung</span>
+              <div class="flex items-center gap-2">
+                <i data-lucide="flag" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Zielerreichung</span>
+              </div>
               <div class="flex flex-col gap-1">
                 <p class="text-[32px] font-bold text-slate-800 leading-normal">05.2035</p>
                 <span class="text-[13px] font-bold text-slate-500">9,1 Jahre</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Ziele -->
+        <div class="flex flex-col gap-4">
+          <span class="select-none text-base font-bold text-slate-800 uppercase">Ziele</span>
+          <div class="grid grid-cols-4 gap-4">
+
+            <!-- CO₂-Neutralität 2035 — bar shows % reduction achieved toward 0 t/Jahr -->
+            <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">CO₂-Neutralität 2035</span>
+                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 shrink-0">Erreicht</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div>
+                  <p class="font-bold text-slate-800"><span class="text-xl">142,2 </span><span class="text-sm font-normal text-slate-500">t/Jahr</span></p>
+                  <span class="text-[13px] text-slate-500">Ziel: 0 t/Jahr bis 2035</span>
+                </div>
+                <div class="relative h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="absolute inset-y-0 left-0 bg-green-500 rounded-full" style="width: 68%"></div>
+                </div>
+                <p class="text-[11px] text-slate-400">68 % Reduktion · bis 05.2035</p>
+              </div>
+            </div>
+
+            <!-- Eigenversorgungsquote — marker shows 80 % target on 0–100 % scale -->
+            <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Eigenversorgungsquote</span>
+                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 shrink-0">Nicht erreicht</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div>
+                  <p class="font-bold text-slate-800"><span class="text-xl">73,7 </span><span class="text-sm font-normal text-slate-500">%</span></p>
+                  <span class="text-[13px] text-slate-500">Ziel: ≥ 80 %</span>
+                </div>
+                <div class="relative h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="absolute inset-y-0 left-0 bg-amber-400 rounded-full" style="width: 73.7%"></div>
+                  <div class="absolute inset-y-0 w-px bg-slate-500" style="left: 80%"></div>
+                </div>
+                <p class="text-[11px] text-slate-400">6,3 Pp. unter Zielwert</p>
+              </div>
+            </div>
+
+            <!-- Erneuerbare Einspeisung — marker shows 50 % threshold, bar exceeds it -->
+            <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Erneuerbare Einspeisung</span>
+                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 shrink-0">Erreicht</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div>
+                  <p class="font-bold text-slate-800"><span class="text-xl">63,4 </span><span class="text-sm font-normal text-slate-500">%</span></p>
+                  <span class="text-[13px] text-slate-500">Ziel: ≥ 50 %</span>
+                </div>
+                <div class="relative h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="absolute inset-y-0 left-0 bg-green-500 rounded-full" style="width: 63.4%"></div>
+                  <div class="absolute inset-y-0 w-px bg-slate-500" style="left: 50%"></div>
+                </div>
+                <p class="text-[11px] text-slate-400">13,4 Pp. über Zielwert</p>
+              </div>
+            </div>
+
+            <!-- Notfallversorgung — bar fills to 48/72 h (66.7 % of target) -->
+            <div class="p-4 bg-white rounded-lg shadow-[0px_1px_2px_rgba(0,0,0,0.10)] outline outline-1 outline-offset-[-1px] outline-slate-200 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="select-none text-xs font-normal text-slate-500 uppercase tracking-wider">Notfallversorgung</span>
+                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 shrink-0">Nicht erreicht</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div>
+                  <p class="font-bold text-slate-800"><span class="text-xl">48 </span><span class="text-sm font-normal text-slate-500">Std.</span></p>
+                  <span class="text-[13px] text-slate-500">Ziel: 72 Std.</span>
+                </div>
+                <div class="relative h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="absolute inset-y-0 left-0 bg-amber-400 rounded-full" style="width: 66.7%"></div>
+                </div>
+                <p class="text-[11px] text-slate-400">24 Stunden unter Zielwert</p>
               </div>
             </div>
 
