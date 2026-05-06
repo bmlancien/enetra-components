@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Szenarienvergleich – Enetra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>[x-cloak]{display:none}</style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body class="bg-slate-50 font-[Inter,sans-serif] text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="select-none bg-white border-b border-slate-200 flex h-14 items-center justify-between px-6 shrink-0">
+      <img src="/images/enetra-logo.png" alt="Enetra" class="h-5 w-32 object-contain" />
+      <nav class="flex gap-6 items-center">
+        <a href="projects.html" class="text-sm text-slate-800 hover:text-slate-600 transition-colors duration-150">Projekte</a>
+        <div class="flex gap-2 items-center">
+          <i data-lucide="user-circle" class="w-4 h-4 text-slate-800"></i>
+          <span class="text-sm text-slate-800">Mein Konto</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-6 lg:px-12 py-12 flex-1">
+      <div class="max-w-[1344px] mx-auto w-full flex flex-col gap-8">
+
+        <!-- Back link -->
+        <a class="select-none flex items-center gap-2 w-fit text-slate-500 hover:text-slate-800 transition-colors duration-150" href="project-overview.html">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span class="text-sm font-semibold">Zum Projekt</span>
+        </a>
+
+        <!-- Page Header -->
+        <div class="select-none flex items-end justify-between gap-8">
+          <div class="flex flex-col gap-1">
+            <h1 class="text-[32px] leading-normal text-slate-800">
+              <span class="font-bold">Szenarienvergleich: </span><span class="font-light">Westhafen</span>
+            </h1>
+          </div>
+          <div class="flex gap-2 items-center shrink-0">
+            <button class="select-none px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex items-center gap-2 cursor-pointer">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span class="text-sm font-semibold tracking-tight">CSV</span>
+            </button>
+            <button class="select-none px-6 py-2 bg-cyan-700 hover:bg-cyan-800 transition-colors duration-150 rounded-full flex items-center gap-2 cursor-pointer">
+              <i data-lucide="download" class="w-4 h-4 text-white"></i>
+              <span class="text-sm font-semibold text-white tracking-tight">PDF herunterladen</span>
+            </button>
+          </div>
+
+        </div>
+        
+        <!-- Scenarios selection -->
+        <div class="pb-8 border-b border-slate-300 self-stretch inline-flex flex-col justify-start items-start gap-2"
+          x-data="{
+            open: false,
+            allScenarios: [
+              { id: 1, name: 'Wasserstoff-Integration', color: '#3B82F6' },
+              { id: 2, name: 'PV-Integration',          color: '#4ADE80' },
+              { id: 3, name: 'Ziel 2035',               color: '#FBBF24' },
+              { id: 4, name: 'Ziel 2030',               color: '#F97316' },
+              { id: 5, name: 'Ziel 2040',               color: '#A855F7' },
+              { id: 6, name: 'Ziel 2045',               color: '#EC4899' },
+            ],
+            selected: [1, 2, 3, 4],
+            get selectedScenarios() { return this.allScenarios.filter(s => this.selected.includes(s.id)); },
+            get availableScenarios() { return this.allScenarios.filter(s => !this.selected.includes(s.id)); },
+            add(id) { if (this.selected.length < 10) this.selected.push(id); this.open = false; },
+            remove(id) { this.selected = this.selected.filter(i => i !== id); },
+            init() { this.$nextTick(() => lucide.createIcons()); this.$watch('selected', () => this.$nextTick(() => lucide.createIcons())); },
+          }">
+          <div class="self-stretch inline-flex justify-start items-center gap-2">
+            <div class="justify-start text-slate-800 text-sm font-semibold">Szenarien zu vergleichen</div>
+          </div>
+          <div class="justify-start text-slate-500 text-xs font-normal">Maximal 10 Szenarien können gleichzeitig verglichen werden. Ist-Zustand ist als Referenz fixiert.</div>
+          <div class="self-stretch pt-2 inline-flex flex-wrap justify-start items-center gap-2">
+
+            <!-- Selected scenario chips -->
+            <template x-for="s in selectedScenarios" :key="s.id">
+              <div class="px-3 py-1 bg-white rounded outline outline-1 outline-offset-[-1px] outline-slate-300 flex justify-center items-center gap-2">
+                <div class="w-2 h-2 rounded-full shrink-0" :style="{ backgroundColor: s.color }"></div>
+                <div class="text-slate-800 text-sm font-medium" x-text="s.name"></div>
+                <button @click="remove(s.id)" class="cursor-pointer text-slate-400 hover:text-slate-700 transition-colors duration-150">
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </template>
+
+            <!-- Add scenario dropdown -->
+            <div class="relative" @click.outside="open = false">
+              <button @click="open = !open" :disabled="selected.length >= 10"
+                class="select-none px-6 py-2 text-cyan-700 rounded-full outline outline-1 outline-offset-[-1px] outline-cyan-700 hover:bg-cyan-700 hover:text-white transition-colors duration-150 flex justify-center items-center gap-3 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span class="text-sm font-bold">Szenario hinzufügen</span>
+              </button>
+              <div x-show="open" x-cloak
+                class="absolute left-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-10 py-1 min-w-[200px]">
+                <template x-if="availableScenarios.length === 0">
+                  <div class="px-4 py-2 text-sm text-slate-400">Keine weiteren Szenarien</div>
+                </template>
+                <template x-for="s in availableScenarios" :key="s.id">
+                  <button @click="add(s.id)"
+                    class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full shrink-0" :style="{ backgroundColor: s.color }"></div>
+                    <span x-text="s.name"></span>
+                  </button>
+                </template>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Comparison table -->
+        <div class="self-stretch inline-flex flex-col justify-start items-start gap-4"
+          x-data="{ view: 'table', menuOpen: false }">
+          <div class="self-stretch inline-flex justify-between items-center">
+            <div class="justify-start text-slate-800 text-base font-bold uppercase">Übersicht</div>
+            <div class="h-11 py-2 flex justify-start items-center gap-2">
+              <button @click="view = 'table'"
+                :class="view === 'table' ? 'text-slate-800 bg-slate-200' : 'bg-white text-slate-500 hover:bg-slate-100'"
+                class="select-none px-3 py-1.5 rounded-[100px] flex justify-center items-center gap-2.5 transition-colors duration-150 cursor-pointer">
+                <i data-lucide="sheet" class="w-4 h-4"></i>
+                <div class="justify-start text-sm font-semibold">Tabellenansicht</div>
+              </button>
+              <button @click="view = 'chart'"
+                :class="view === 'chart' ? 'text-slate-800 bg-slate-200' : 'bg-white text-slate-500 hover:bg-slate-100'"
+                class="select-none px-3 py-1.5 rounded-[100px] flex justify-center items-center gap-2.5 transition-colors duration-150 cursor-pointer">
+                <i data-lucide="chart-line" class="w-4 h-4"></i>
+                <div class="justify-start text-sm font-semibold">Grafikansicht</div>
+              </button>
+            </div>
+            <div class="relative" @click.outside="menuOpen = false">
+              <button @click="menuOpen = !menuOpen" class="select-none cursor-pointer text-slate-400 hover:text-slate-600 transition-colors duration-150">
+                <i data-lucide="ellipsis" class="w-5 h-5"></i>
+              </button>
+              <div x-show="menuOpen" x-cloak
+                class="absolute right-0 top-full mt-1 bg-white rounded-[4px] shadow-[0px_4px_6px_rgba(0,0,0,0.15)] outline outline-1 outline-offset-[-1px] outline-slate-200 z-10 py-1 w-48">
+                <button @click="menuOpen = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3">
+                  <i data-lucide="download" class="w-4 h-4 shrink-0"></i> CSV herunterladen
+                </button>
+                <button @click="menuOpen = false" class="select-none w-full text-left px-4 py-2 text-sm text-slate-800 hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3">
+                  <i data-lucide="table" class="w-4 h-4 shrink-0"></i> Excel herunterladen
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Grafikansicht placeholder -->
+          <div x-show="view === 'chart'" x-cloak class="self-stretch p-12 bg-white rounded-lg outline outline-1 outline-offset-[-1px] outline-slate-200 shadow-[0px_1px_4px_0px_rgba(0,0,0,0.10)] flex flex-col items-center justify-center gap-4 text-slate-400">
+            <i data-lucide="chart-line" class="w-10 h-10"></i>
+            <p class="text-sm font-semibold">Grafikansicht – Diagramme folgen</p>
+          </div>
+
+          <div x-show="view === 'table'" class="self-stretch rounded-lg outline outline-1 outline-slate-300 flex flex-col justify-start items-start">
+            <div class="self-stretch p-4 bg-slate-100 rounded-tl-lg rounded-tr-lg border-b border-slate-300 inline-flex justify-start items-center gap-6">
+              <div class="w-96 justify-start text-slate-500 text-sm font-bold uppercase">Szenario</div>
+              <div class="w-32 flex justify-start items-center gap-2">
+                <div class="justify-start"><span class="text-slate-500 text-sm font-bold uppercase">CO₂ (</span><span class="text-slate-500 text-sm font-bold">t/a</span><span class="text-slate-500 text-sm font-bold uppercase">)</span></div>
+              </div>
+              <div class="justify-start"><span class="text-slate-500 text-sm font-bold uppercase">Energiekosten (</span><span class="text-slate-500 text-sm font-bold">Tsd. €/a</span><span class="text-slate-500 text-sm font-bold uppercase">)</span></div>
+              <div class="justify-start text-slate-500 text-sm font-bold uppercase">Eigenversorgung (%)</div>
+              <div class="justify-start"><span class="text-slate-500 text-sm font-bold uppercase">Investition (</span><span class="text-slate-500 text-sm font-bold font-['Inter']">Tsd. €</span><span class="text-slate-500 text-sm font-bold font-['Inter'] uppercase">)</span></div>
+              <div class="justify-start text-slate-500 text-sm font-bold uppercase">Zielerreichung</div>
+            </div>
+            <div class="self-stretch p-4 bg-slate-50 border-b border-slate-300 inline-flex justify-start items-center gap-6">
+              <div class="w-96 flex justify-start items-center gap-2">
+                <div class="justify-start text-slate-500 text-sm font-bold">Ist-Zustand</div>
+                <div class="px-2 py-0.5 bg-slate-200 rounded flex justify-center items-center gap-2.5">
+                  <div class="justify-start text-slate-500 text-xs font-bold uppercase">Basis</div>
+                </div>
+              </div>
+              <div class="w-32 flex justify-start items-center gap-3">
+                <div class="justify-start text-slate-500 text-sm font-normal">447</div>
+              </div>
+              <div class="w-48 justify-start text-slate-500 text-sm font-normal">316</div>
+              <div class="w-40 justify-start text-slate-500 text-sm font-normal">15</div>
+              <div class="w-36 justify-start text-slate-500 text-sm font-normal">—</div>
+              <div class="w-40 justify-start text-slate-500 text-sm font-normal">—</div>
+            </div>
+            <div class="self-stretch p-4 bg-white border-b border-slate-300 inline-flex justify-start items-center gap-6">
+              <div class="w-96 flex justify-start items-center gap-2">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div class="justify-start text-slate-800 text-sm font-bold">Wassertoff-Integration</div>
+              </div>
+              <div class="w-32 flex justify-start items-center gap-3">
+                <div class="justify-start text-slate-800 text-sm font-normal">87</div>
+              </div>
+              <div class="w-48 justify-start text-slate-800 text-sm font-normal">120</div>
+              <div class="w-40 flex justify-start items-center gap-2">
+                <div class="justify-start text-slate-800 text-sm font-normal">87</div>
+                <i data-lucide="star" class="w-4 h-4 text-emerald-500"></i>
+              </div>
+              <div class="w-36 justify-start text-slate-800 text-sm font-normal">567</div>
+              <div class="w-40 justify-start text-slate-800 text-sm font-normal">05.2035</div>
+            </div>
+            <div class="self-stretch p-4 bg-white border-b border-slate-300 inline-flex justify-start items-center gap-6">
+              <div class="w-96 flex justify-start items-center gap-2">
+                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div class="justify-start text-slate-800 text-sm font-bold">PV-Integration</div>
+              </div>
+              <div class="w-32 flex justify-start items-center gap-3">
+                <div class="justify-start text-slate-800 text-sm font-normal">22</div>
+                <i data-lucide="star" class="w-4 h-4 text-emerald-500"></i>
+              </div>
+              <div class="w-48 flex justify-start items-center gap-2">
+                <div class="justify-start text-slate-800 text-sm font-normal">112</div>
+                <i data-lucide="star" class="w-4 h-4 text-emerald-500"></i>
+              </div>
+              <div class="w-40 justify-start text-slate-800 text-sm font-normal">75</div>
+              <div class="w-36 justify-start text-slate-800 text-sm font-normal">456</div>
+              <div class="w-40 justify-start text-slate-800 text-sm font-normal">11.2034</div>
+            </div>
+            <div class="self-stretch p-4 bg-white border-b border-slate-300 inline-flex justify-start items-center gap-6">
+              <div class="w-96 flex justify-start items-center gap-2">
+                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                <div class="justify-start text-slate-800 text-sm font-bold">Ziel 2035</div>
+              </div>
+              <div class="w-32 flex justify-start items-center gap-3">
+                <div class="justify-start text-slate-800 text-sm font-normal">96</div>
+              </div>
+              <div class="w-48 justify-start text-slate-800 text-sm font-normal">145</div>
+              <div class="w-40 justify-start text-slate-800 text-sm font-normal">80</div>
+              <div class="w-36 justify-start text-slate-800 text-sm font-normal">780</div>
+              <div class="w-40 justify-start text-slate-800 text-sm font-normal">08.2035</div>
+            </div>
+            <div class="self-stretch p-4 bg-white border-b border-slate-300 inline-flex justify-start items-center gap-6">
+              <div class="w-96 flex justify-start items-center gap-2">
+                <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                <div class="justify-start text-slate-800 text-sm font-bold">Ziel 2030</div>
+              </div>
+              <div class="w-32 flex justify-start items-center gap-3">
+                <div class="justify-start text-slate-800 text-sm font-normal">218</div>
+              </div>
+              <div class="w-48 justify-start text-slate-800 text-sm font-normal">240</div>
+              <div class="w-40 justify-start text-slate-800 text-sm font-normal">43</div>
+              <div class="w-36 flex justify-start items-center gap-2">
+                <div class="justify-start text-slate-800 text-sm font-normal">454</div>
+                <i data-lucide="star" class="w-4 h-4 text-emerald-500"></i>
+              </div>
+              <div class="flex justify-start items-center gap-2">
+                <div class="justify-start text-slate-800 text-sm font-normal">07.2030</div>
+                <i data-lucide="star" class="w-4 h-4 text-emerald-500"></i>
+              </div>
+            </div>
+            <div class="self-stretch p-4 bg-slate-100 rounded-bl-lg rounded-br-lg inline-flex justify-start items-center gap-3">
+              <i data-lucide="star" class="w-4 h-4 text-emerald-500"></i>
+              <div class="justify-start text-slate-500 text-xs font-normal">Bester Wert je Spalte</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="select-none bg-white border-t border-slate-200 flex items-center justify-between px-6 h-12">
+      <img src="/images/enetra-logo.png" alt="Enetra" class="h-4 object-contain" />
+      <nav class="flex gap-6 items-center">
+        <a href="#" class="text-sm text-slate-500 hover:text-slate-800 transition-colors duration-150">Impressum</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-slate-800 transition-colors duration-150">Datenschutz</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-slate-800 transition-colors duration-150">Kontakt</a>
+      </nav>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
