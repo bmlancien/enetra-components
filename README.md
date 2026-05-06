@@ -26,7 +26,7 @@ npm run preview  # preview the production build locally
 |---|---|
 | `pages/landing.html` | Landing page |
 | `pages/login.html` | Auth — sign in |
-| `rpages/egister.html` | Auth — create account |
+| `pages/register.html` | Auth — create account |
 | `pages/forgot-password.html` | Auth — request password reset |
 | `pages/reset-password.html` | Auth — set new password |
 | `pages/projects.html` | Project list |
