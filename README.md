@@ -24,18 +24,18 @@ npm run preview  # preview the production build locally
 
 | File | Description |
 |---|---|
-| `landing.html` | Public marketing / landing page |
-| `login.html` | Auth — sign in |
-| `register.html` | Auth — create account |
-| `forgot-password.html` | Auth — request password reset |
-| `reset-password.html` | Auth — set new password |
-| `projects.html` | Project list |
-| `project-overview.html` | Single project overview |
-| `ergebnisse.html` | Scenario results (Wasserstoff-Integration) |
-| `szenarienvergleich.html` | Side-by-side scenario comparison |
-| `einstellungen.html` | Settings |
-| `user-rechte.html` | User rights / permissions |
-| `index.html` | Dev entry point |
+| `pages/landing.html` | Landing page |
+| `pages/login.html` | Auth — sign in |
+| `rpages/egister.html` | Auth — create account |
+| `pages/forgot-password.html` | Auth — request password reset |
+| `pages/reset-password.html` | Auth — set new password |
+| `pages/projects.html` | Project list |
+| `pages/project-overview.html` | Single project overview |
+| `pages/ergebnisse.html` | Scenario results |
+| `pages/szenarienvergleich.html` | Side-by-side scenario comparison |
+| `pages/einstellungen.html` | Settings |
+| `pages/user-rechte.html` | User rights / permissions |
+| `index.html` | Entry point |
 
 ## Components
 
